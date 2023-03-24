@@ -1,0 +1,26 @@
+from .db import db, environment, SCHEMA, add_prefix_for_prod
+from sqlalchemy.sql import func
+
+class FoodEntry(db.Model):
+    __tablename__ = 'food_entries'
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    food_diary_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('food_diaries.id')), nullable=False)
+    name = db.Column(db.String, nullable=False)
+    amount = db.Column(db.String, nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
+
+    food_diaries = db.relationship('FoodDiary', back_populates='food_entries')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'foodDiaryId': self.food_diary_id,
+            'name': self.name,
+            'amount': self.amount,
+            'createdAt': self.created_at,
+            'updatedAt': self.updated_at
+        }

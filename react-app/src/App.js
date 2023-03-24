@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import FoodSearchBar from "./components/Food/FoodSearch/foodSearch";
+import ExerciseSearchBar from "./components/Exercise/ExerciseSearch/exerciseSearch";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/food/search">
             <FoodSearchBar />
+          </Route>
+          <Route path="/exercise/search">
+            <ExerciseSearchBar />
           </Route>
         </Switch>
       )}
