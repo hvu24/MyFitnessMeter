@@ -5,13 +5,15 @@ import { searchFoodsReducer } from './foodSearch';
 import { foodNutritionReducer } from './foodNutrition';
 import { searchExercisesReducer } from './exerciseSearch';
 import { exerciseDetailsReducer } from './exerciseDetails';
+import { searchFoodDiaryReducer } from './foodDiary';
 
 const rootReducer = combineReducers({
   session,
   searchFoodsReducer,
   foodNutritionReducer,
   searchExercisesReducer,
-  exerciseDetailsReducer
+  exerciseDetailsReducer,
+  searchFoodDiaryReducer
 });
 
 

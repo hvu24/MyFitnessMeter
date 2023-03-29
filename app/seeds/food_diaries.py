@@ -6,17 +6,23 @@ def seed_food_diaries():
     food_diary_1 = FoodDiary(
         id = 1,
         user_id = 1,
-        date = date(2023, 3, 21)
+        date = date(2023, 3, 24)
     )
     food_diary_2 = FoodDiary(
         id = 2,
         user_id = 2,
+        date = date(2023, 3, 23)
+    )
+    food_diary_3 = FoodDiary(
+        id = 3,
+        user_id = 1,
         date = date(2023, 3, 22)
     )
 
 
     db.session.add(food_diary_1)
     db.session.add(food_diary_2)
+    db.session.add(food_diary_3)
     db.session.commit()
 
 

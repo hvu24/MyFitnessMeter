@@ -22,5 +22,6 @@ class FoodDiary(db.Model):
             'date': self.date,
             'createdAt': self.created_at,
             'updatedAt': self.updated_at,
-            'userInfo': self.users.to_dict()
+            'userInfo': self.users.to_dict(),
+            'foodEntries': [food_entry.to_dict() for food_entry in self.food_entries]
         }

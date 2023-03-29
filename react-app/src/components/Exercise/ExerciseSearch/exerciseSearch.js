@@ -40,7 +40,7 @@ const ExerciseSearchBar = () => {
         <form onSubmit={handleSubmit}>
             <input className='search-bar' placeholder='Search...' type="text" value={searchTerm} onChange={handleInputChange} />
             <button type="submit" className='search-bar-button'>
-                <i class="fa-solid fa-utensils"></i>
+            <i class="fa-solid fa-dumbbell"></i>
             </button>
             {exercises && exercises[0] && <h5>Exercises</h5>}
             <div className='search-common-list'>
