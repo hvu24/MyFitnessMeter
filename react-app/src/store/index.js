@@ -6,6 +6,7 @@ import { foodNutritionReducer } from './foodNutrition';
 import { searchExercisesReducer } from './exerciseSearch';
 import { exerciseDetailsReducer } from './exerciseDetails';
 import { searchFoodDiaryReducer } from './foodDiary';
+import { profileReducer } from './profile';
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   foodNutritionReducer,
   searchExercisesReducer,
   exerciseDetailsReducer,
-  searchFoodDiaryReducer
+  searchFoodDiaryReducer,
+  profileReducer
 });
 
 

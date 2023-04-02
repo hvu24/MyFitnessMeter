@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
@@ -20,6 +20,9 @@ function Navigation({ isLoaded }){
 			</li>
 			<li>
 				<NavLink exact to="/exercise/search">Exercise Search</NavLink>
+			</li>
+			<li>
+				<NavLink exact to="/profile">Profile</NavLink>
 			</li>
 			{isLoaded && (
 				<li>
