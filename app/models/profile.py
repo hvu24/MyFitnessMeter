@@ -36,9 +36,9 @@ class Profile(db.Model):
     @hybrid_property
     def basal_metabolic_rate(self):
         if (self.sex == 'male'):
-            return (66+(6.23*self.weight_in_pounds)+(12.7*self.height_in_inches)-(6.8*self.age))
+            return ((4.536*self.weight_in_pounds)+(15.88*self.height_in_inches)-(5*self.age)+5)
         if (self.sex == 'female'):
-            return (655+(4.35*self.weight_in_pounds)+(4.7*self.height_in_inches)-(4.7*self.age))
+            return ((4.536*self.weight_in_pounds)+(15.88*self.height_in_inches)-(5*self.age)-161)
 
     @hybrid_property
     def activity_calories(self):
