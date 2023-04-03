@@ -4,6 +4,8 @@ import "./foodDiary.css"
 import { getFoodDiary, createFoodDiary, clearFoodDiary, editFoodDiary, deleteFoodEntry, editFoodEntry } from '../../../store/foodDiary';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import OpenModalButton from '../../OpenModalButton';
+import FoodSearchModal from '../../FoodSearchModal/foodSearchModal';
 
 const FoodDiary = () => {
     const [date, setDate] = useState(new Date());
@@ -30,6 +32,13 @@ const FoodDiary = () => {
                 setEntries(res?.foodEntries)
             })
     }, [dispatch, date]);
+
+    const handleModalSubmit = () => {
+        dispatch(getFoodDiary(payload))
+            .then((res) => {
+                setEntries(res?.foodEntries)
+            })
+    };
 
     const onClick = () => {
         setShowCalender(!showCalender)
@@ -88,6 +97,11 @@ const FoodDiary = () => {
         <div><h1>{date.toLocaleString('en-US', { month: 'long', year: 'numeric', day: 'numeric' })}</h1> {' '}
             <input type="submit" value={calenderButton} onClick={onClick} />
             {showCalender ? <Calendar className='calendar' onChange={onChange} value={date} /> : null}
+            <h5></h5>
+            <OpenModalButton
+                buttonText="Add food from database"
+                modalComponent={<FoodSearchModal onModalSubmit={handleModalSubmit} date={date} />}
+            />
             <h5></h5>
             <form method='POST' onSubmit={entrySubmit}>
                 <label className=''>Food Name:

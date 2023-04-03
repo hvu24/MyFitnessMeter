@@ -46,6 +46,7 @@ export const getFoodDiary = (payload) => async (dispatch) => {
 
 export const createFoodDiary = (payload) => async (dispatch) => {
     const { body, dateObj } = payload
+    console.log('logging payload from createFoodDiary', payload)
     const res = await fetch(`/api/food/diary/${dateObj.year}/${dateObj.month}/${dateObj.day}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
