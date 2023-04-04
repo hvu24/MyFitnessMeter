@@ -300,14 +300,16 @@ function FoodSearchModal({ date, onModalSubmit }) {
         <div>
             <div>
                 <form onSubmit={handleSubmit}>
-                    <input className='search-bar' placeholder='Search...' type="text" value={searchTerm} onChange={handleInputChange} />
-                    <button type="submit" className='search-bar-button'>
-                        <i class="fa-solid fa-utensils"></i>
-                    </button>
+                    <div style={{ display: "flex", justifyContent: 'center' }}>
+                        <input className='search-bar' placeholder='Search...' type="text" value={searchTerm} onChange={handleInputChange} />
+                        <button type="submit" className='search-bar-button'>
+                            <i class="fa-solid fa-utensils"></i>
+                        </button>
+                    </div>
                     {/* <h5>{date.toLocaleString()}</h5> */}
                     <div style={{ display: "flex", justifyContent: 'space-between' }}>
                         <div>
-                            {foods && foods.common && <h5>Common foods</h5>}
+                            {foods && foods.common && <h5 style={{ display: "flex", justifyContent: 'center' }}>Common foods</h5>}
                             <div className='search-common-list'>
                                 {foods && foods.common && foods?.common.map((food, index) => (
                                     <div className='search-entry' key={index} onClick={() => handleSearch(food.food_name)}>{food.food_name}</div>
@@ -315,7 +317,7 @@ function FoodSearchModal({ date, onModalSubmit }) {
                             </div>
                         </div>
                         <div>
-                            {foods && foods.branded && <h5>Branded foods</h5>}
+                            {foods && foods.branded && <h5 style={{ display: "flex", justifyContent: 'center' }}>Branded foods</h5>}
                             <div className='search-branded-list'>
                                 {foods && foods.branded && foods?.branded.map((food, index) => (
                                     <div className='search-entry' key={index} onClick={() => handleSearch(food.food_name)}>{food.food_name}</div>
@@ -325,27 +327,32 @@ function FoodSearchModal({ date, onModalSubmit }) {
                     </div>
                 </form>
             </div>
-            {nutrition && nutrition.food_name && <h5>Nutrition Facts</h5>}
+
             <div style={{ display: "flex", justifyContent: 'space-between' }}>
-                <div className='search-branded-list'>
-                    {nutrition && nutrition.full_nutrients && nutrition?.full_nutrients.map((nutrient, index) => {
-                        // if (nutrient.attr_id === 208) return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
-                        if (showNutrientDetail(nutrient.attr_id).name !== 'none') return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
-                    })}
-                </div>
                 <div>
+                    {nutrition && nutrition.food_name && <h5 style={{ display: "flex", justifyContent: 'center' }}>Nutrition Facts</h5>}
+                    <div className='search-branded-list'>
+                        {nutrition && nutrition.full_nutrients && nutrition?.full_nutrients.map((nutrient, index) => {
+                            // if (nutrient.attr_id === 208) return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
+                            if (showNutrientDetail(nutrient.attr_id).name !== 'none') return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
+                        })}
+                    </div>
+                </div>
+                <div style={{ display: "flex", justifyContent: 'center', alignItems: 'center' }}>
                     {nutrition && nutrition.full_nutrients && <form method="POST" onSubmit={entrySubmit}>
-                        <div>Food Name: {searchTerm}
+                        <div>Food Name: <b>{searchTerm}</b>
                         </div>
-                        <label className=''>Amount:
-                            <input
-                                type="number"
-                                placeholder="Amount in grams..."
-                                required
-                                onChange={(e) => setFoodAmount(e.target.value)}
-                            />
-                        </label>
-                        <button className="" type="submit">Submit food entry</button>
+                        <div>
+                            <label className=''>Amount:
+                                <input
+                                    type="number"
+                                    placeholder="Amount in grams..."
+                                    required
+                                    onChange={(e) => setFoodAmount(e.target.value)}
+                                />
+                            </label>
+                        </div>
+                        <div><button className="" type="submit">Submit food entry</button></div>
                     </form>}
                 </div>
             </div>

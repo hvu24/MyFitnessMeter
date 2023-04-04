@@ -7,13 +7,26 @@ const getSearchExercisesAction = (exercises) => ({
 });
 
 
+// export const getSearchExercises = (searchTerm) => async (dispatch) => {
+//     console.log('logging search term from thunk', searchTerm)
+//     const res = await fetch(`https://api.api-ninjas.com/v1/exercises?name=${searchTerm}`, {
+//         method: "GET",
+//         headers: {
+//             "X-Api-Key": process.env.REACT_APP_EXERCISE_API_KEY
+//         }
+//     });
+
+//     if (res.ok) {
+//         const exercises = await res.json();
+//         dispatch(getSearchExercisesAction(exercises));
+//         return exercises;
+//     }
+// };
+
 export const getSearchExercises = (searchTerm) => async (dispatch) => {
     console.log('logging search term from thunk', searchTerm)
-    const res = await fetch(`https://api.api-ninjas.com/v1/exercises?name=${searchTerm}`, {
+    const res = await fetch(`/api/exercise`, {
         method: "GET",
-        headers: {
-            "X-Api-Key": process.env.REACT_APP_EXERCISE_API_KEY
-        }
     });
 
     if (res.ok) {

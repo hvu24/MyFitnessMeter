@@ -10,9 +10,9 @@
     border: none;
 }
 
-.search-bar-container{
+.exercise-search{
     display: flex;
-    margin-right: 500px;
+    /* margin-right: 200px; */
 }
 
 .search-bar-button{

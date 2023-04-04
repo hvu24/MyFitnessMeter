@@ -11,7 +11,7 @@ class ProfileForm(FlaskForm):
     body_fat = DecimalField('Body Fat', validators=[])
     weight_goal_rate = DecimalField('Weight Goal Rate', validators=[])
     activity_level = StringField('Activity Level', validators=[])
-    weight_goal = DecimalField('Weight Goal', validators=[])
+    weight_goal = IntegerField('Weight Goal', validators=[])
     protein_ratio = IntegerField('Protein Ratio', validators=[])
     carbohydrate_ratio = IntegerField('Carbohydrate Ratio', validators=[])
     fat_ratio = IntegerField('Fat Ratio', validators=[])

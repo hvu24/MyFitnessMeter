@@ -1,51 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getProfile, editProfile } from '../../store/profile';
+import { getProfile, editProfile, resetProfile, createProfile } from '../../store/profile';
 
 
 const UserProfile = () => {
     const sessionUserProfile = useSelector(state => state?.session.profileReducer);
-    const [feet, setFeet] = useState(0)
+    const [feet, setFeet] = useState(1)
     const [inch, setInch] = useState(0)
-    const [gender, setGender] = useState('')
-    const [birthday, setBirthday] = useState()
-    const [weight, setWeight] = useState()
-    const [bodyfat, setBodyfat] = useState()
-    const [weightGoalRate, setWeightGoalRate] = useState();
-    const [bmi, setBmi] = useState()
-    const [bmr, setBmr] = useState()
-    const [activity, setActivity] = useState()
-    const [activityCalories, setActivityCalories] = useState()
-    const [weightGoal, setWeightGoal] = useState()
-    const [weightGoalCalories, setWeightGoalCalories] = useState()
-    const [proteinTarget, setProteinTarget] = useState()
-    const [carbTarget, setCarbTarget] = useState()
-    const [fatTarget, setFatTarget] = useState()
-    const [age, setAge] = useState()
+    const [gender, setGender] = useState('male')
+    const date = new Date()
+    const [birthday, setBirthday] = useState(date?.toISOString().substring(0, 10))
+    const [weight, setWeight] = useState(0)
+    const [bodyfat, setBodyfat] = useState(0)
+    const [weightGoalRate, setWeightGoalRate] = useState(0);
+    const [bmi, setBmi] = useState(0)
+    const [bmr, setBmr] = useState(0)
+    const [activity, setActivity] = useState('None')
+    const [activityCalories, setActivityCalories] = useState(0)
+    const [weightGoal, setWeightGoal] = useState(0)
+    const [weightGoalCalories, setWeightGoalCalories] = useState(0)
+    const [proteinTarget, setProteinTarget] = useState(0)
+    const [carbTarget, setCarbTarget] = useState(0)
+    const [fatTarget, setFatTarget] = useState(0)
+    const [age, setAge] = useState(0)
+    const [hideSubmitNew, setHideSubmitNew] = useState(true)
+    const [hideSubmitEdit, setHideSubmitEdit] = useState(false)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getProfile())
             .then((res) => {
-                setInch(res.heightInInches % 12)
-                setFeet(Math.floor(res.heightInInches / 12))
-                setGender(res.sex)
-                const date = new Date(res.birthday)
-                setBirthday(date.toISOString().substring(0, 10))
-                setWeight(res.weightInPounds)
-                setBodyfat(res.bodyFat)
-                setWeightGoalRate(res.weightGoalRate)
-                setBmi(res.bodyMassIndex)
-                setBmr(res.basalMetabolicRate)
-                setActivity(res.activityLevel)
-                setActivityCalories(res.activityCalories)
-                setWeightGoal(res.weightGoal)
-                setWeightGoalCalories(res.weightGoalCalories)
-                setProteinTarget(res.proteinRatio)
-                setCarbTarget(res.carbohydrateRatio)
-                setFatTarget(res.fatRatio)
-                setAge(res.age)
+                if (res.id) {
+                    setHideSubmitNew(false)
+                    setHideSubmitEdit(true)
+                    setInch(res?.heightInInches % 12)
+                    setFeet(Math.floor(res?.heightInInches / 12))
+                    setGender(res?.sex)
+                    const date = new Date(res?.birthday)
+                    setBirthday(date?.toISOString().substring(0, 10))
+                    setWeight(res?.weightInPounds)
+                    setBodyfat(res?.bodyFat)
+                    setWeightGoalRate(res?.weightGoalRate)
+                    setBmi(res?.bodyMassIndex)
+                    setBmr(res?.basalMetabolicRate)
+                    setActivity(res?.activityLevel)
+                    setActivityCalories(res?.activityCalories)
+                    setWeightGoal(res?.weightGoal)
+                    setWeightGoalCalories(res?.weightGoalCalories)
+                    setProteinTarget(res?.proteinRatio)
+                    setCarbTarget(res?.carbohydrateRatio)
+                    setFatTarget(res?.fatRatio)
+                    setAge(res?.age)
+                }
             })
     }, [dispatch])
 
@@ -72,7 +79,7 @@ const UserProfile = () => {
         // e.prevent.default()
         const payload = {
             body: {
-                "height_in_inches": feet * 12 + inch,
+                "height_in_inches": parseInt(feet * 12) + parseInt(inch),
                 "sex": gender,
                 "birthday": birthday,
                 "weight_in_pounds": weight,
@@ -86,11 +93,107 @@ const UserProfile = () => {
             }
         }
         dispatch(editProfile(payload))
+            .then((res) => {
+                if (res.id) {
+                    setHideSubmitNew(false)
+                    setHideSubmitEdit(true)
+                    setInch(res?.heightInInches % 12)
+                    setFeet(Math.floor(res?.heightInInches / 12))
+                    setGender(res?.sex)
+                    const date = new Date(res?.birthday)
+                    setBirthday(date?.toISOString().substring(0, 10))
+                    setWeight(res?.weightInPounds)
+                    setBodyfat(res?.bodyFat)
+                    setWeightGoalRate(res?.weightGoalRate)
+                    setBmi(res?.bodyMassIndex)
+                    setBmr(res?.basalMetabolicRate)
+                    setActivity(res?.activityLevel)
+                    setActivityCalories(res?.activityCalories)
+                    setWeightGoal(res?.weightGoal)
+                    setWeightGoalCalories(res?.weightGoalCalories)
+                    setProteinTarget(res?.proteinRatio)
+                    setCarbTarget(res?.carbohydrateRatio)
+                    setFatTarget(res?.fatRatio)
+                    setAge(res?.age)
+                }
+            })
+    }
+
+    const newEntrySubmit = (e) => {
+        // e.prevent.default()
+        console.log('logging from new entry')
+        const payload = {
+            body: {
+                "height_in_inches": parseInt(feet * 12) + parseInt(inch),
+                "sex": gender,
+                "birthday": birthday,
+                "weight_in_pounds": weight,
+                "body_fat": bodyfat,
+                "weight_goal_rate": weightGoalRate,
+                "activity_level": activity,
+                "weight_goal": weightGoal,
+                "protein_ratio": proteinTarget,
+                "carbohydrate_ratio": carbTarget,
+                "fat_ratio": fatTarget
+            }
+        }
+        dispatch(createProfile(payload))
+            .then((res) => {
+                if (res.id) {
+                    setHideSubmitNew(false)
+                    setHideSubmitEdit(true)
+                    setInch(res?.heightInInches % 12)
+                    setFeet(Math.floor(res?.heightInInches / 12))
+                    setGender(res?.sex)
+                    const date = new Date(res?.birthday)
+                    setBirthday(date?.toISOString().substring(0, 10))
+                    setWeight(res?.weightInPounds)
+                    setBodyfat(res?.bodyFat)
+                    setWeightGoalRate(res?.weightGoalRate)
+                    setBmi(res?.bodyMassIndex)
+                    setBmr(res?.basalMetabolicRate)
+                    setActivity(res?.activityLevel)
+                    setActivityCalories(res?.activityCalories)
+                    setWeightGoal(res?.weightGoal)
+                    setWeightGoalCalories(res?.weightGoalCalories)
+                    setProteinTarget(res?.proteinRatio)
+                    setCarbTarget(res?.carbohydrateRatio)
+                    setFatTarget(res?.fatRatio)
+                    setAge(res?.age)
+                }
+            })
+    }
+
+    const resetProfileHandler = () => {
+        dispatch(resetProfile())
+            .then((res) => {
+                setHideSubmitNew(true)
+                setHideSubmitEdit(false)
+                setInch(0)
+                setFeet(1)
+                setGender('male')
+                const date = new Date()
+                setBirthday(date?.toISOString().substring(0, 10))
+                setWeight(0)
+                setBodyfat(0)
+                setWeightGoalRate(0)
+                setBmi(0)
+                setBmr(0)
+                setActivity('None')
+                setActivityCalories(0)
+                setWeightGoal(0)
+                setWeightGoalCalories(0)
+                setProteinTarget(0)
+                setCarbTarget(0)
+                setFatTarget(0)
+                setAge(0)
+            })
     }
 
     return (
         <>
-            <form onSubmit={entrySubmit}>
+            <button className="" type="submit" onClick={resetProfileHandler}>Reset profile</button>
+            <form>
                 <div onChange={genderHandler} style={{ display: "flex", justifyContent: 'space-between' }}>Sex
                     <label><input type='radio' name='sex' value='male' checked={gender === 'male'}></input>Male</label>
                     <label><input type='radio' name='sex' value='female' checked={gender === 'female'}></input>Female</label>
@@ -134,7 +237,7 @@ const UserProfile = () => {
                     </label>
                     <label>
                         <select value={activity} onChange={(e) => { setActivity(e.target.value) }}>
-                            {["sedentary", "lightly_active", "moderately_active", "very_active"].map((ele, index) => {
+                            {["None", "sedentary", "lightly_active", "moderately_active", "very_active"].map((ele, index) => {
                                 return <option value={ele}>{ele}</option>
                             })}
                         </select>
@@ -173,8 +276,9 @@ const UserProfile = () => {
                 <div style={{ display: "flex", justifyContent: 'space-between' }}>Daily calorie goal without exercise
                     <label>{bmr + activityCalories + weightGoalCalories}{" kcal"}</label>
                 </div>
-                <button className="" type="submit">Submit edit profile</button>
             </form>
+            {hideSubmitEdit && <button className="" type="submit" onClick={entrySubmit}>Submit profile edit</button>}
+            {hideSubmitNew && <button className="" type="submit" onClick={newEntrySubmit}>Submit new profile</button>}
         </>
     );
 };
