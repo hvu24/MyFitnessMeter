@@ -2,33 +2,179 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getProfile, editProfile, resetProfile, createProfile } from '../../store/profile';
+import Plot from 'react-plotly.js';
 
 
 const UserProfile = () => {
     const sessionUserProfile = useSelector(state => state?.session.profileReducer);
-    const [feet, setFeet] = useState(1)
-    const [inch, setInch] = useState(0)
-    const [gender, setGender] = useState('male')
-    const date = new Date()
-    const [birthday, setBirthday] = useState(date?.toISOString().substring(0, 10))
-    const [weight, setWeight] = useState(0)
-    const [bodyfat, setBodyfat] = useState(0)
-    const [weightGoalRate, setWeightGoalRate] = useState(0);
-    const [bmi, setBmi] = useState(0)
-    const [bmr, setBmr] = useState(0)
-    const [activity, setActivity] = useState('None')
-    const [activityCalories, setActivityCalories] = useState(0)
-    const [weightGoal, setWeightGoal] = useState(0)
-    const [weightGoalCalories, setWeightGoalCalories] = useState(0)
-    const [proteinTarget, setProteinTarget] = useState(0)
-    const [carbTarget, setCarbTarget] = useState(0)
-    const [fatTarget, setFatTarget] = useState(0)
-    const [age, setAge] = useState(0)
+    const [feet, setFeet] = useState()
+    const [inch, setInch] = useState()
+    const [gender, setGender] = useState()
+    const [birthday, setBirthday] = useState()
+    const [weight, setWeight] = useState()
+    const [bodyfat, setBodyfat] = useState()
+    const [weightGoalRate, setWeightGoalRate] = useState();
+    const [bmi, setBmi] = useState()
+    const [bmr, setBmr] = useState()
+    const [activity, setActivity] = useState()
+    const [activityCalories, setActivityCalories] = useState()
+    const [weightGoal, setWeightGoal] = useState()
+    const [weightGoalCalories, setWeightGoalCalories] = useState()
+    const [age, setAge] = useState()
     const [hideSubmitNew, setHideSubmitNew] = useState(true)
     const [hideSubmitEdit, setHideSubmitEdit] = useState(false)
     const dispatch = useDispatch()
 
+    const [protein, setProtein] = useState();
+    const [carbs, setCarbs] = useState();
+    const [fat, setFat] = useState();
+
+    const date = new Date()
+    const date2 = new Date()
+    let dateMultiplier = 1
+
+    if ((weightGoal > weight && weightGoalRate > 0) || (weightGoal < weight && weightGoalRate < 0)) {
+        dateMultiplier = 7 * ((weightGoal - weight) / weightGoalRate)
+        if (dateMultiplier !== Infinity && dateMultiplier >= 0 && dateMultiplier !== NaN) {
+            date2.setDate(date2.getDate() + dateMultiplier)
+        }
+    }
+
+    const data = [
+        {
+            x: [
+                date?.toISOString().substring(0, 10),
+                date2?.toISOString().substring(0, 10),
+            ],
+            y: [weight, weightGoal],
+            // mode: 'markers',
+            marker: {
+                color: 'blue',
+                size: 10,
+                symbol: 'circle',
+                line: {
+                    color: 'black',
+                    width: 1
+                }
+            },
+            type: 'scatter',
+            name: 'Current Weight'
+        },
+        {
+            x: [
+                date?.toISOString().substring(0, 10),
+                date2?.toISOString().substring(0, 10),
+            ],
+            y: [weightGoal, weightGoal],
+            type: 'scatter',
+            name: 'Goal Weight'
+        }
+    ];
+    const layout = {
+        width: 800,
+        height: 400,
+        title: 'Weight Goal Timeline',
+        font: {
+            family: 'Arial',
+            size: 10,
+            color: 'black',
+        },
+        xaxis: {
+            title: 'Date',
+            titlefont: {
+                family: 'Arial',
+                size: 12,
+                color: 'black'
+            }
+        },
+        yaxis: {
+            title: 'Weight',
+            titlefont: {
+                family: 'Arial',
+                size: 12,
+                color: 'black'
+            }
+        }
+    };
+
+    const data2 = {
+        values: [protein, carbs, fat],
+        labels: ['Protein', 'Carbohydrates', 'Fat'],
+        type: 'pie',
+        hole: 0.6,
+        marker: {
+            colors: ['rgb(61, 252, 3)', 'rgb(123, 3, 252)', 'rgb(252, 98, 3)'],
+            line: {
+                color: 'black',
+                width: 2
+            }
+        },
+    };
+
+    const layout2 = {
+        // title: 'Donut Chart with Plotly.js',
+        showlegend: true,
+        annotations: [
+            {
+                font: {
+                    size: 15,
+                },
+                showarrow: false,
+                text: 'Macronutrients',
+                x: 0.5,
+                y: 0.5,
+            },
+        ],
+    };
+
+    function handleProteinChange(e) {
+        const value = parseInt(e.target.value);
+        const remainingPercentage = 100 - value;
+        const newPercentage = remainingPercentage / 2;
+        setProtein(value);
+        setCarbs(newPercentage);
+        setFat(newPercentage);
+    }
+
+    function handleCarbsChange(e) {
+        const value = parseInt(e.target.value);
+        const remainingPercentage = 100 - value;
+        const newPercentage = remainingPercentage / 2;
+        setProtein(newPercentage);
+        setCarbs(value);
+        setFat(newPercentage);
+    }
+
+    function handleFatChange(e) {
+        const value = parseInt(e.target.value);
+        const remainingPercentage = 100 - value;
+        const newPercentage = remainingPercentage / 2;
+        setProtein(newPercentage);
+        setCarbs(newPercentage);
+        setFat(value);
+    }
+
     useEffect(() => {
+        setHideSubmitNew(true)
+        setHideSubmitEdit(false)
+        setInch(0)
+        setFeet(1)
+        setGender('male')
+        const date = new Date()
+        setBirthday(date?.toISOString().substring(0, 10))
+        setWeight(0)
+        setBodyfat(0)
+        setWeightGoalRate(0)
+        setBmi(0)
+        setBmr(0)
+        setActivity('None')
+        setActivityCalories(0)
+        setWeightGoal(0)
+        setWeightGoalCalories(0)
+        setAge(0)
+        setProtein(0)
+        setCarbs(0)
+        setFat(0)
         dispatch(getProfile())
             .then((res) => {
                 if (res.id) {
@@ -48,10 +194,11 @@ const UserProfile = () => {
                     setActivityCalories(res?.activityCalories)
                     setWeightGoal(res?.weightGoal)
                     setWeightGoalCalories(res?.weightGoalCalories)
-                    setProteinTarget(res?.proteinRatio)
-                    setCarbTarget(res?.carbohydrateRatio)
-                    setFatTarget(res?.fatRatio)
                     setAge(res?.age)
+                    setProtein(res?.proteinRatio)
+                    setCarbs(res?.carbohydrateRatio)
+                    setFat(res?.fatRatio)
+
                 }
             })
     }, [dispatch])
@@ -73,6 +220,13 @@ const UserProfile = () => {
     }
     const weightGoalRateChange = (e) => {
         setWeightGoalRate(e.target.value);
+        setWeightGoalCalories((e.target.value/0.25) * 125)
+        if ((weightGoal > weight && weightGoalRate > 0) || (weightGoal < weight && weightGoalRate < 0)) {
+            dateMultiplier = 7 * ((weightGoal - weight) / weightGoalRate)
+            if (dateMultiplier !== Infinity && dateMultiplier >= 0 && dateMultiplier !== NaN) {
+                date2.setDate(date2.getDate() + dateMultiplier)
+            }
+        }
     };
 
     const entrySubmit = (e) => {
@@ -87,9 +241,9 @@ const UserProfile = () => {
                 "weight_goal_rate": weightGoalRate,
                 "activity_level": activity,
                 "weight_goal": weightGoal,
-                "protein_ratio": proteinTarget,
-                "carbohydrate_ratio": carbTarget,
-                "fat_ratio": fatTarget
+                "protein_ratio": protein,
+                "carbohydrate_ratio": carbs,
+                "fat_ratio": fat
             }
         }
         dispatch(editProfile(payload))
@@ -111,17 +265,17 @@ const UserProfile = () => {
                     setActivityCalories(res?.activityCalories)
                     setWeightGoal(res?.weightGoal)
                     setWeightGoalCalories(res?.weightGoalCalories)
-                    setProteinTarget(res?.proteinRatio)
-                    setCarbTarget(res?.carbohydrateRatio)
-                    setFatTarget(res?.fatRatio)
                     setAge(res?.age)
+                    setProtein(res?.proteinRatio)
+                    setCarbs(res?.carbohydrateRatio)
+                    setFat(res?.fatRatio)
+                    window.alert('Successfully edited profile!')
                 }
             })
     }
 
     const newEntrySubmit = (e) => {
         // e.prevent.default()
-        console.log('logging from new entry')
         const payload = {
             body: {
                 "height_in_inches": parseInt(feet * 12) + parseInt(inch),
@@ -132,9 +286,9 @@ const UserProfile = () => {
                 "weight_goal_rate": weightGoalRate,
                 "activity_level": activity,
                 "weight_goal": weightGoal,
-                "protein_ratio": proteinTarget,
-                "carbohydrate_ratio": carbTarget,
-                "fat_ratio": fatTarget
+                "protein_ratio": protein,
+                "carbohydrate_ratio": carbs,
+                "fat_ratio": fat
             }
         }
         dispatch(createProfile(payload))
@@ -156,10 +310,11 @@ const UserProfile = () => {
                     setActivityCalories(res?.activityCalories)
                     setWeightGoal(res?.weightGoal)
                     setWeightGoalCalories(res?.weightGoalCalories)
-                    setProteinTarget(res?.proteinRatio)
-                    setCarbTarget(res?.carbohydrateRatio)
-                    setFatTarget(res?.fatRatio)
                     setAge(res?.age)
+                    setProtein(res?.proteinRatio)
+                    setCarbs(res?.carbohydrateRatio)
+                    setFat(res?.fatRatio)
+                    window.alert('Successfully created profile!')
                 }
             })
     }
@@ -183,10 +338,11 @@ const UserProfile = () => {
                 setActivityCalories(0)
                 setWeightGoal(0)
                 setWeightGoalCalories(0)
-                setProteinTarget(0)
-                setCarbTarget(0)
-                setFatTarget(0)
                 setAge(0)
+                setProtein(0)
+                setCarbs(0)
+                setFat(0)
+                window.alert('Successfully deleted profile!')
             })
     }
 
@@ -236,7 +392,9 @@ const UserProfile = () => {
                     <label>{activityCalories} {" kcal"}
                     </label>
                     <label>
-                        <select value={activity} onChange={(e) => { setActivity(e.target.value) }}>
+                        <select value={activity} onChange={(e) => {
+                            setActivity(e.target.value)
+                            }}>
                             {["None", "sedentary", "lightly_active", "moderately_active", "very_active"].map((ele, index) => {
                                 return <option value={ele}>{ele}</option>
                             })}
@@ -258,26 +416,44 @@ const UserProfile = () => {
                             max="2"
                             step='0.25'
                             value={weightGoalRate}
+                            required
                             onChange={weightGoalRateChange}
                         />
                         {weightGoalRate}lbs / week
                     </label>
                     {weightGoalCalories}{' kcal daily'}
                 </div>
-                <div style={{ display: "flex", justifyContent: 'space-between' }}>Protein Target %
-                    <label><input onChange={(e) => { setProteinTarget(e.target.value) }} type='number' defaultValue={proteinTarget}></input></label>
+                <Plot
+                    data={data}
+                    layout={layout}
+                />
+                <div style={{ display: "flex", justifyContent: 'space-around' }}>
+                    <label>
+                        Protein Ratio:
+                        <input type="number" min='0' max='100' value={protein} onChange={handleProteinChange} />
+                        %
+                    </label>
+                    <label>
+                        Carb Ratio:
+                        <input type="number" min='0' max='100' value={carbs} onChange={handleCarbsChange} />
+                        %
+                    </label>
+                    <label>
+                        Fat Ratio:
+                        <input type="number" min='0' max='100' value={fat} onChange={handleFatChange} />
+                        %
+                    </label>
                 </div>
-                <div style={{ display: "flex", justifyContent: 'space-between' }}>Carbohydrate Target %
-                    <label><input onChange={(e) => { setCarbTarget(e.target.value) }} type='number' defaultValue={carbTarget}></input></label>
-                </div>
-                <div style={{ display: "flex", justifyContent: 'space-between' }}>Fat Target %
-                    <label><input onChange={(e) => { setFatTarget(e.target.value) }} type='number' defaultValue={fatTarget}></input></label>
-                </div>
+                <Plot
+                    data={[data2]}
+                    layout={layout2}
+                    style={{ width: '100%', height: '400px' }}
+                />
                 <div style={{ display: "flex", justifyContent: 'space-between' }}>Daily calorie goal without exercise
                     <label>{bmr + activityCalories + weightGoalCalories}{" kcal"}</label>
                 </div>
             </form>
-            {hideSubmitEdit && <button className="" type="submit" onClick={entrySubmit}>Submit profile edit</button>}
+            {hideSubmitEdit && <button className="" type="submit" onClick={entrySubmit}>Save profile edit</button>}
             {hideSubmitNew && <button className="" type="submit" onClick={newEntrySubmit}>Submit new profile</button>}
         </>
     );

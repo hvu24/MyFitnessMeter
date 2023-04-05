@@ -26,7 +26,7 @@ class Profile(db.Model):
     carbohydrate_ratio = db.Column(db.Integer, nullable=False)
     fat_ratio = db.Column(db.Integer, nullable=False)
     activity_level = db.Column(db.String(255), nullable=False)
-    weight_goal = db.Column(db.Integer, nullable=False)
+    weight_goal = db.Column(db.Float, nullable=False)
     weight_goal_rate = db.Column(db.Float, nullable=False)
 
     @hybrid_property
@@ -55,40 +55,41 @@ class Profile(db.Model):
 
     @hybrid_property
     def weight_goal_calories(self):
-        if self.weight_goal_rate == -2.0:
-            return -125 * (8)
-        elif self.weight_goal_rate == -1.75:
-            return -125 * (7)
-        elif self.weight_goal_rate == -1.5:
-            return -125 * (6)
-        elif self.weight_goal_rate == -1.25:
-            return -125 * (5)
-        elif self.weight_goal_rate == -1:
-            return -125 * (4)
-        elif self.weight_goal_rate == -.75:
-            return -125 * (3)
-        elif self.weight_goal_rate == -.5:
-            return -125 * (2)
-        elif self.weight_goal_rate == -.25:
-            return -125
-        elif self.weight_goal_rate == 2.0:
-            return 125 * (8)
-        elif self.weight_goal_rate == 1.75:
-            return 125 * (7)
-        elif self.weight_goal_rate == 1.5:
-            return 125 * (6)
-        elif self.weight_goal_rate == 1.25:
-            return 125 * (5)
-        elif self.weight_goal_rate == 1:
-            return 125 * (4)
-        elif self.weight_goal_rate == .75:
-            return 125 * (3)
-        elif self.weight_goal_rate == .5:
-            return 125 * (2)
-        elif self.weight_goal_rate == .25:
-            return 125
-        else:
-            return 0
+        return (self.weight_goal_rate/0.25) * 125
+        # if self.weight_goal_rate == -2.0:
+        #     return -125 * (8)
+        # elif self.weight_goal_rate == -1.75:
+        #     return -125 * (7)
+        # elif self.weight_goal_rate == -1.5:
+        #     return -125 * (6)
+        # elif self.weight_goal_rate == -1.25:
+        #     return -125 * (5)
+        # elif self.weight_goal_rate == -1:
+        #     return -125 * (4)
+        # elif self.weight_goal_rate == -.75:
+        #     return -125 * (3)
+        # elif self.weight_goal_rate == -.5:
+        #     return -125 * (2)
+        # elif self.weight_goal_rate == -.25:
+        #     return -125
+        # elif self.weight_goal_rate == 2.0:
+        #     return 125 * (8)
+        # elif self.weight_goal_rate == 1.75:
+        #     return 125 * (7)
+        # elif self.weight_goal_rate == 1.5:
+        #     return 125 * (6)
+        # elif self.weight_goal_rate == 1.25:
+        #     return 125 * (5)
+        # elif self.weight_goal_rate == 1:
+        #     return 125 * (4)
+        # elif self.weight_goal_rate == .75:
+        #     return 125 * (3)
+        # elif self.weight_goal_rate == .5:
+        #     return 125 * (2)
+        # elif self.weight_goal_rate == .25:
+        #     return 125
+        # else:
+        #     return 0
 
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
