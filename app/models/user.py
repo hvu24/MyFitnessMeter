@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
 
     food_diaries = db.relationship('FoodDiary', cascade="all, delete", back_populates='user')
     profile = db.relationship('Profile', cascade='all, delete', back_populates='user')
+    exercise_diaries = db.relationship('ExerciseDiary', cascade="all, delete", back_populates='user')
 
     @property
     def password(self):

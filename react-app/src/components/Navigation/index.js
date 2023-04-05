@@ -22,6 +22,9 @@ function Navigation({ isLoaded }) {
 				<NavLink exact to="/exercise/search">Exercise Search</NavLink>
 			</li>
 			<li>
+				<NavLink exact to="/exercise/diary">Exercise Diary</NavLink>
+			</li>
+			<li>
 				<NavLink exact to="/profile">Profile</NavLink>
 			</li>
 			{isLoaded && (

@@ -10,6 +10,7 @@ import ExerciseSearchBar from "./components/Exercise/ExerciseSearch/exerciseSear
 import FoodDiary from "./components/Food/FoodDiary/foodDiary";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UserProfile from "./components/profile/profile";
+import ExerciseDiary from "./components/Exercise/ExerciseDiary/exerciseDiary";
 
 
 function App() {
@@ -39,6 +40,11 @@ function App() {
           <Route path='/food/diary'>
             <ProtectedRoute>
               <FoodDiary />
+            </ProtectedRoute>
+          </Route>
+          <Route path='/exercise/diary'>
+            <ProtectedRoute>
+              <ExerciseDiary />
             </ProtectedRoute>
           </Route>
           <Route path='/profile'>

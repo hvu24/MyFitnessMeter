@@ -34,11 +34,7 @@ const FoodSearchBar = () => {
         }
         dispatch(getFoodNutrition(payload))
             .then(async (res) => {
-                console.log('logging response from dispatch', res)
                 setNutrition(res.foods[0])
-            })
-            .then(() => {
-                console.log('logging nutrition from 2nd then', nutrition)
             })
     }
 

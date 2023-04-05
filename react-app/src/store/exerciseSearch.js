@@ -24,7 +24,6 @@ const getSearchExercisesAction = (exercises) => ({
 // };
 
 export const getSearchExercises = (searchTerm) => async (dispatch) => {
-    console.log('logging search term from thunk', searchTerm)
     const res = await fetch(`/api/exercise`, {
         method: "GET",
     });

@@ -8,7 +8,6 @@ const getSearchFoodsAction = (foods) => ({
 
 
 export const getSearchFoods = (searchTerm) => async (dispatch) => {
-    console.log('logging search term from thunk', searchTerm)
     const res = await fetch(`https://trackapi.nutritionix.com/v2/search/instant?query=${searchTerm}`, {
         method: "GET",
         headers: {

@@ -44,9 +44,7 @@ const ExerciseSearchBar = () => {
     }
 
     const handleSearch = async (exercise) => {
-        console.log(exercise)
         setSearchTerm(exercise)
-        console.log('logging mets', exerciseNameMetObj[exercise])
         // const payload = {
         //     "query": exercise
         // }
