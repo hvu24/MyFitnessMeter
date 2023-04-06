@@ -1,8 +1,8 @@
-const GET_EXERCISE_DIARY = "/food/getExerciseDiary";
-const CREATE_EXERCISE_DIARY = "/food/createExerciseDiary";
-const CLEAR_EXERCISE_DIARY = "/food/clearExerciseDiary";
-const EDIT_EXERCISE_DIARY = "/food/editExerciseDiary";
-const EDIT_EXERCISE_ENTRY = "/food/deleteExerciseEntry";
+const GET_EXERCISE_DIARY = "/exercise/getExerciseDiary";
+const CREATE_EXERCISE_DIARY = "/exercise/createExerciseDiary";
+const CLEAR_EXERCISE_DIARY = "/exercise/clearExerciseDiary";
+const EDIT_EXERCISE_DIARY = "/exercise/editExerciseDiary";
+const EDIT_EXERCISE_ENTRY = "/exercise/deleteExerciseEntry";
 
 
 const getExerciseDiaryAction = (diary) => ({

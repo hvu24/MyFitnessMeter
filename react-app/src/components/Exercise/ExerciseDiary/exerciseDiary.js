@@ -4,8 +4,9 @@ import "./exerciseDiary.css"
 import { getExerciseDiary, createExerciseDiary, clearExerciseDiary, editExerciseDiary, deleteExerciseEntry, editExerciseEntry } from '../../../store/exerciseDiary';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-// import OpenModalButton from '../../OpenModalButton';
-// import ExerciseSearchModal from '../../ExerciseSearchModal/exerciseSearchModal';
+import OpenModalButton from '../../OpenModalButton';
+import ExerciseSearchModal from '../../ExerciseSearchModal/exerciseSearchModal';
+import { getFoodDiary } from '../../../store/foodDiary';
 
 const ExerciseDiary = () => {
     const [date, setDate] = useState(new Date());
@@ -93,15 +94,22 @@ const ExerciseDiary = () => {
             })
     }
 
+    const handleModalSubmit = () => {
+        dispatch(getExerciseDiary(payload))
+            .then((res) => {
+                setEntries(res?.exerciseEntries)
+            })
+    };
+
     return (
         <div><h1>{date.toLocaleString('en-US', { month: 'long', year: 'numeric', day: 'numeric' })}</h1> {' '}
             <input type="submit" value={calenderButton} onClick={onClick} />
             {showCalender ? <Calendar className='calendar' onChange={onChange} value={date} /> : null}
             <h5></h5>
-            {/* <OpenModalButton
+            <OpenModalButton
                 buttonText="Add exercise from database"
                 modalComponent={<ExerciseSearchModal onModalSubmit={handleModalSubmit} date={date} />}
-            /> */}
+            />
             <h5></h5>
             <form method='POST' onSubmit={entrySubmit}>
                 <label className=''>Exercise Name:
