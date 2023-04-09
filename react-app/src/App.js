@@ -34,9 +34,9 @@ function App() {
           <Route path="/food/search">
             <FoodSearchBar />
           </Route>
-          <Route path="/exercise/search">
+          {/* <Route path="/exercise/search">
             <ExerciseSearchBar />
-          </Route>
+          </Route> */}
           <Route path='/food/diary'>
             <ProtectedRoute>
               <FoodDiary />

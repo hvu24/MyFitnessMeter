@@ -18,9 +18,9 @@ function Navigation({ isLoaded }) {
 			<li>
 				<NavLink exact to="/food/diary">Food Diary</NavLink>
 			</li>
-			<li>
+			{/* <li>
 				<NavLink exact to="/exercise/search">Exercise Search</NavLink>
-			</li>
+			</li> */}
 			<li>
 				<NavLink exact to="/exercise/diary">Exercise Diary</NavLink>
 			</li>

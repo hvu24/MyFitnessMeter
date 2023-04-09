@@ -18,6 +18,7 @@ function ExerciseSearchModal({ date, onModalSubmit }) {
     const [recommendations, setRecommendations] = useState([]);
     const [weight, setWeight] = useState(0)
     const [calories, setCalories] = useState(0)
+    const [mets, setMets] = useState(0)
 
 
     let exercisesObj = useSelector(state => state.searchExercisesReducer);
@@ -67,11 +68,14 @@ function ExerciseSearchModal({ date, onModalSubmit }) {
         e.preventDefault();
         payload.body = {
             "name": searchTerm,
-            "amount": exerciseAmount
+            "amount": exerciseAmount,
+            'calories': (exerciseNameMetObj[searchTerm] * 3.5 * weight * 0.45359237 * exerciseAmount) / 200,
+            'mets': mets
         }
         dispatch(createExerciseDiary(payload))
             .then((res) => {
                 setEntries(res?.foodEntries)
+                setCalories(res?.totalCalories || 0)
                 onModalSubmit()
             })
     }
@@ -103,6 +107,7 @@ function ExerciseSearchModal({ date, onModalSubmit }) {
                                             onChange={(e) => {
                                                 setExerciseAmount(e.target.value)
                                                 setCalories((exerciseNameMetObj[searchTerm] * 3.5 * weight * 0.45359237 * exerciseAmount) / 200)
+                                                setMets(exerciseNameMetObj[searchTerm])
                                             }}
                                         />
                                         <button type="submit" className='search-bar-button'>

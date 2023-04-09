@@ -55,10 +55,12 @@ const ExerciseSearchBar = () => {
     return (
 
         <form onSubmit={handleSubmit}>
-            <input className='search-bar' placeholder='Search...' type="text" value={searchTerm} onChange={handleInputChange} />
-            <button type="submit" className='search-bar-button'>
-                <i class="fa-solid fa-dumbbell"></i>
-            </button>
+            <div style={{ display: "flex", justifyContent: 'center' }}>
+                <input className='search-bar' placeholder='Search...' type="text" value={searchTerm} onChange={handleInputChange} />
+                <button type="submit" className='search-bar-button'>
+                    <i class="fa-solid fa-dumbbell"></i>
+                </button>
+            </div>
             <div className='exercise-search' style={{ display: "flex", justifyContent: 'space-between' }}>
                 <div className='search-list' >
                     {recommendations.map((recommendation, index) => (

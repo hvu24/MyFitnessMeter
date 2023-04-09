@@ -15,6 +15,8 @@ const FoodDiary = () => {
     const [foodName, setFoodName] = useState('')
     const [foodAmount, setFoodAmount] = useState('')
     const [foodId, setFoodId] = useState(0)
+    const [calorieAmount, setCalorieAmount] = useState('')
+    const [calories, setCalories] = useState(0)
     const dispatch = useDispatch();
     // const diary = useSelector((state) => state?.searchFoodDiaryReducer)
 
@@ -30,6 +32,7 @@ const FoodDiary = () => {
         dispatch(getFoodDiary(payload))
             .then((res) => {
                 setEntries(res?.foodEntries)
+                setCalories(res?.totalCalories || 0)
             })
     }, [dispatch, date]);
 
@@ -37,6 +40,7 @@ const FoodDiary = () => {
         dispatch(getFoodDiary(payload))
             .then((res) => {
                 setEntries(res?.foodEntries)
+                setCalories(res?.totalCalories)
             })
     };
 
@@ -58,11 +62,13 @@ const FoodDiary = () => {
         e.preventDefault();
         payload.body = {
             "name": foodName,
-            "amount": foodAmount
+            "amount": foodAmount,
+            "calories_per_gram": calorieAmount
         }
         dispatch(createFoodDiary(payload))
             .then((res) => {
                 setEntries(res?.foodEntries)
+                setCalories(res?.totalCalories)
             })
     }
 
@@ -73,23 +79,27 @@ const FoodDiary = () => {
         dispatch(editFoodDiary(payload))
             .then((res) => {
                 setEntries(res?.foodEntries)
+                setCalories(res?.totalCalories)
             })
     }
 
     const diaryDeleteHandler = () => {
         dispatch(clearFoodDiary(payload))
         setEntries([])
+        setCalories(0)
     }
 
     const entryEditSubmit = () => {
         payload.body = {
             "id": foodId,
             "name": foodName,
-            "amount": foodAmount
+            "amount": foodAmount,
+            "calories_per_gram": calorieAmount
         }
         dispatch(editFoodEntry(payload))
             .then((res) => {
                 setEntries(res?.foodEntries)
+                setCalories(res?.totalCalories)
             })
     }
 
@@ -117,27 +127,39 @@ const FoodDiary = () => {
                         type="number"
                         placeholder="Amount in grams..."
                         required
+                        step='0.01'
                         onChange={(e) => setFoodAmount(e.target.value)}
+                    />
+                </label>
+                <label className=''>Calories per gram:
+                    <input
+                        type="number"
+                        placeholder="Amount in kcal..."
+                        required
+                        step='0.01'
+                        onChange={(e) => setCalorieAmount(e.target.value)}
                     />
                 </label>
                 <button className="" type="submit">Submit food entry</button>
             </form>
             <h5>Food Entries</h5>
             <div className='food-diary-list'>
-                {entries && entries.length > 0 ? entries.map((entry, index) => (
-                    <div className='food-entry' key={index} >
-                        {entry.name}
+                {entries && entries.length > 0 ? entries.map((entry, index) => {
+                    return <div style={{ display: "flex", justifyContent: 'space-between' }}>
+                        <div className='food-entry' key={index} >
+                            {entry.name}
+                        </div>
                         <div>
                             <input
                                 className='food-entry-amount'
                                 type="number"
-                                // placeholder={entry.amount}
                                 defaultValue={entry.amount}
                                 required
                                 onChange={(e) => {
                                     setFoodAmount(e.target.value)
                                     setFoodId(entry.id)
                                     setFoodName(entry.name)
+                                    setCalorieAmount(entry.caloriesPerGram)
                                 }}
                                 onKeyPress={(e) => {
                                     if (e.key === "Enter") {
@@ -146,12 +168,17 @@ const FoodDiary = () => {
                                     }
                                 }}
                             />grams {' '}
+                        </div>
+                        <div>
+                            {Math.round(entry.calories) + ' kcal'}
                             <button type="submit" onClick={() => entryDeleteHandler(entry.id)}><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                     </div>
-                )) : <>No food entries for this date.</>}
+
+                }) : <>No food entries for this date.</>}
             </div>
             <button type="submit" onClick={() => diaryDeleteHandler()}>Clear Diary</button>
+            <h1>Calories consumed: {Math.round(calories)}</h1>
         </div>
     );
 };

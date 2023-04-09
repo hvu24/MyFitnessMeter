@@ -14,6 +14,8 @@ food_routes = Blueprint('foods', __name__)
 def getDiary(year, month, day):
     diary = FoodDiary.query.filter(
         FoodDiary.date == date(year, month, day), FoodDiary.user_id == current_user.get_id()).first()
+    # if diary is None:
+    #     return 'no diary for that date'
     return diary.to_dict()
 
 
@@ -36,7 +38,8 @@ def addToDiary(year, month, day):
         new_entry = FoodEntry(
             food_diary_id=diary.id,
             name=data['name'],
-            amount=data['amount']
+            amount=data['amount'],
+            calories_per_gram=data['calories_per_gram']
         )
         db.session.add(new_entry)
         db.session.commit()
@@ -44,7 +47,8 @@ def addToDiary(year, month, day):
     new_entry = FoodEntry(
         food_diary_id=diary.id,
         name=data['name'],
-        amount=data['amount']
+        amount=data['amount'],
+        calories_per_gram=data['calories_per_gram']
     )
     db.session.add(new_entry)
     db.session.commit()
@@ -57,7 +61,7 @@ def deleteDiary(year, month, day):
     diary = FoodDiary.query.filter(
         FoodDiary.date == date(year, month, day), FoodDiary.user_id == current_user.get_id()).first()
     if diary is None:
-        return 'no diary for that date'
+        return "'no diary for that date'"
     db.session.delete(diary)
     db.session.commit()
     return 'successfully deleted'
@@ -87,6 +91,7 @@ def editEntry(year, month, day):
     entry = FoodEntry.query.filter(
         FoodEntry.id == data['id'], FoodEntry.food_diary_id == diary.id).first()
     entry.amount = data['amount']
+    entry.calories_per_gram=data['calories_per_gram']
     # for key, value in data.items():
     #     if hasattr(entry, key) and value is not None:
     #         setattr(entry, key, value)

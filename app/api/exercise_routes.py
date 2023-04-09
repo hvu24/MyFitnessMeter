@@ -15,11 +15,14 @@ def getExercises():
     exercises = Exercise.query.all()
     return jsonify({'exercises': [exercise.to_dict() for exercise in exercises]})
 
+
 @exercise_routes.route('/diary/<int:year>/<int:month>/<int:day>', methods=['GET'])
 @login_required
 def getDiary(year, month, day):
     diary = ExerciseDiary.query.filter(
         ExerciseDiary.date == date(year, month, day), ExerciseDiary.user_id == current_user.get_id()).first()
+    if diary is None:
+        return 'no diary for that date'
     return diary.to_dict()
 
 
@@ -42,7 +45,9 @@ def addToDiary(year, month, day):
         new_entry = ExerciseEntry(
             exercise_diary_id=diary.id,
             name=data['name'],
-            amount=data['amount']
+            amount=data['amount'],
+            calories=data['calories'],
+            mets=data['mets']
         )
         db.session.add(new_entry)
         db.session.commit()
@@ -50,7 +55,9 @@ def addToDiary(year, month, day):
     new_entry = ExerciseEntry(
         exercise_diary_id=diary.id,
         name=data['name'],
-        amount=data['amount']
+        amount=data['amount'],
+        calories=data['calories'],
+        mets=data['mets']
     )
     db.session.add(new_entry)
     db.session.commit()
@@ -93,6 +100,8 @@ def editEntry(year, month, day):
     entry = ExerciseEntry.query.filter(
         ExerciseEntry.id == data['id'], ExerciseEntry.exercise_diary_id == diary.id).first()
     entry.amount = data['amount']
+    entry.calories = data['calories']
+    entry.mets=data['mets']
     # for key, value in data.items():
     #     if hasattr(entry, key) and value is not None:
     #         setattr(entry, key, value)

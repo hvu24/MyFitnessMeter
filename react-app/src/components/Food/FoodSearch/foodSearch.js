@@ -44,208 +44,208 @@ const FoodSearchBar = () => {
             'unit': ''
         }
         switch (id) {
-            case 208:
-                detail.name = 'energy'
-                detail.unit = 'kcal'
-                break
+            // case 208:
+            //     detail.name = 'Energy'
+            //     detail.unit = 'kcal'
+            //     break
             case 221:
-                detail.name = 'alcohol'
+                detail.name = 'Alcohol'
                 detail.unit = 'g'
                 break
             case 262:
-                detail.name = 'caffeine'
+                detail.name = 'Caffeine'
                 detail.unit = 'mg'
                 break
             case 255:
-                detail.name = 'water'
+                detail.name = 'Water'
                 detail.unit = 'g'
                 break
             case 291:
-                detail.name = 'fiber'
+                detail.name = 'Fiber'
                 detail.unit = 'g'
                 break
             case 209:
-                detail.name = 'starch'
+                detail.name = 'Starch'
                 detail.unit = 'g'
                 break
             case 269:
-                detail.name = 'sugars'
+                detail.name = 'Sugars'
                 detail.unit = 'g'
                 break
             case 205:
-                detail.name = 'net_carbs'
+                detail.name = 'Net carbs'
                 detail.unit = 'g'
                 break
             case 204:
-                detail.name = 'total_fat'
+                detail.name = 'Total fat'
                 detail.unit = 'g'
                 break
             case 645:
-                detail.name = 'monounsaturated_fat'
+                detail.name = 'Monounsaturated fat'
                 detail.unit = 'g'
                 break
             case 646:
-                detail.name = 'polyunsaturated_fat'
+                detail.name = 'Polyunsaturated fat'
                 detail.unit = 'g'
                 break
             case 619:
-                detail.name = 'omega3_alphalinolenic_acid'
+                detail.name = 'Omega3 alphalinolenic acid'
                 detail.unit = 'g'
                 break
             case 629:
-                detail.name = 'omega3_eicosapentaenoic_acid'
+                detail.name = 'Omega3 eicosapentaenoic acid'
                 detail.unit = 'g'
                 break
             case 621:
-                detail.name = 'omega3_docosahexaenoic_acid'
+                detail.name = 'Omega3 docosahexaenoic acid'
                 detail.unit = 'g'
                 break
             case 618:
-                detail.name = 'linoleic_acid'
+                detail.name = 'Linoleic acid'
                 detail.unit = 'g'
                 break
             case 620:
-                detail.name = 'arachidonic_acid'
+                detail.name = 'Arachidonic acid'
                 detail.unit = 'g'
                 break
             case 606:
-                detail.name = 'saturated_fat'
+                detail.name = 'Saturated fat'
                 detail.unit = 'g'
                 break
             case 605:
-                detail.name = 'trans_fat'
+                detail.name = 'Trans fat'
                 detail.unit = 'g'
                 break
             case 601:
-                detail.name = 'cholesterol'
+                detail.name = 'Cholesterol'
                 detail.unit = 'mg'
                 break
             case 203:
-                detail.name = 'total_protein'
+                detail.name = 'Total protein'
                 detail.unit = 'g'
                 break
             case 512:
-                detail.name = 'histidine'
+                detail.name = 'Histidine'
                 detail.unit = 'g'
                 break
             case 503:
-                detail.name = 'isoleucine'
+                detail.name = 'Isoleucine'
                 detail.unit = 'g'
                 break
             case 504:
-                detail.name = 'leucine'
+                detail.name = 'Leucine'
                 detail.unit = 'g'
                 break
             case 505:
-                detail.name = 'lysine'
+                detail.name = 'Lysine'
                 detail.unit = 'g'
                 break
             case 506:
-                detail.name = 'methionine'
+                detail.name = 'Methionine'
                 detail.unit = 'g'
                 break
             case 508:
-                detail.name = 'phenylalanine'
+                detail.name = 'Phenylalanine'
                 detail.unit = 'g'
                 break
             case 502:
-                detail.name = 'threonine'
+                detail.name = 'Threonine'
                 detail.unit = 'g'
                 break
             case 501:
-                detail.name = 'tryptophan'
+                detail.name = 'Tryptophan'
                 detail.unit = 'g'
                 break
             case 510:
-                detail.name = 'valine'
+                detail.name = 'Valine'
                 detail.unit = 'g'
                 break
             case 404:
-                detail.name = 'vitamin_b1'
+                detail.name = 'Vitamin b1'
                 detail.unit = 'mg'
                 break
             case 405:
-                detail.name = 'vitamin_b2'
+                detail.name = 'Vitamin b2'
                 detail.unit = 'mg'
                 break
             case 406:
-                detail.name = 'vitamin_b3'
+                detail.name = 'Vitamin b3'
                 detail.unit = 'mg'
                 break
             case 410:
-                detail.name = 'vitamin_b5'
+                detail.name = 'Vitamin b5'
                 detail.unit = 'mg'
                 break
             case 415:
-                detail.name = 'vitamin_b6'
+                detail.name = 'Vitamin b6'
                 detail.unit = 'mg'
                 break
             case 418:
-                detail.name = 'vitamin_b12'
+                detail.name = 'Vitamin b12'
                 detail.unit = 'Aug'
                 break
             case 417:
-                detail.name = 'folate'
+                detail.name = 'Folate'
                 detail.unit = 'Aug'
                 break
             case 320:
-                detail.name = 'vitamin_a'
+                detail.name = 'Vitamin a'
                 detail.unit = 'Aug'
                 break
             case 401:
-                detail.name = 'vitamin_c'
+                detail.name = 'Vitamin c'
                 detail.unit = 'mg'
                 break
             case 324:
-                detail.name = 'vitamin_d'
+                detail.name = 'Vitamin d'
                 detail.unit = 'iu'
                 break
             case 323:
-                detail.name = 'vitamin_e'
+                detail.name = 'Vitamin e'
                 detail.unit = 'mg'
                 break
             case 430:
-                detail.name = 'vitamin_k'
+                detail.name = 'Vitamin k'
                 detail.unit = 'Aug'
                 break
             case 301:
-                detail.name = 'calcium'
+                detail.name = 'Calcium'
                 detail.unit = 'mg'
                 break
             case 312:
-                detail.name = 'copper'
+                detail.name = 'Copper'
                 detail.unit = 'mg'
                 break
             case 303:
-                detail.name = 'iron'
+                detail.name = 'Iron'
                 detail.unit = 'mg'
                 break
             case 304:
-                detail.name = 'magnesium'
+                detail.name = 'Magnesium'
                 detail.unit = 'mg'
                 break
             case 315:
-                detail.name = 'manganese'
+                detail.name = 'Manganese'
                 detail.unit = 'mg'
                 break
             case 305:
-                detail.name = 'phosphorus'
+                detail.name = 'Phosphorus'
                 detail.unit = 'mg'
                 break
             case 306:
-                detail.name = 'potassium'
+                detail.name = 'Potassium'
                 detail.unit = 'mg'
                 break
             case 317:
-                detail.name = 'selenium'
+                detail.name = 'Selenium'
                 detail.unit = 'Aug'
                 break
             case 307:
-                detail.name = 'sodium'
+                detail.name = 'Sodium'
                 detail.unit = 'mg'
                 break
             case 309:
-                detail.name = 'zinc'
+                detail.name = 'Zinc'
                 detail.unit = 'mg'
                 break
             default:
@@ -294,6 +294,10 @@ const FoodSearchBar = () => {
                 <div>
                     {nutrition && nutrition.food_name && <h5 style={{ display: "flex", justifyContent: 'center' }}>Nutrition Facts</h5>}
                     <div className='search-branded-list'>
+                        {nutrition && nutrition.full_nutrients &&<div>Food name: {nutrition.food_name}</div>}
+                        {nutrition && nutrition.full_nutrients && <div>Serving size: {nutrition.serving_weight_grams}grams</div>}
+                        {nutrition && nutrition.full_nutrients && <div>Calories: {nutrition.nf_calories}kcal</div>}
+                        {nutrition && nutrition.full_nutrients && <div>Calories per gram: {nutrition.nf_calories/nutrition.serving_weight_grams}kcal</div>}
                         {nutrition && nutrition.full_nutrients && nutrition?.full_nutrients.map((nutrient, index) => {
                             // if (nutrient.attr_id === 208) return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
                             if (showNutrientDetail(nutrient.attr_id).name !== 'none') return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>

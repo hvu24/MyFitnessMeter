@@ -6,7 +6,8 @@ from wtforms.validators import DataRequired, Email, ValidationError, NumberRange
 class EditFoodEntryForm(FlaskForm):
     id = IntegerField('Id', validators=[DataRequired()])
     name = StringField('Name', validators=[DataRequired()])
-    amount = StringField('Amount', validators=[DataRequired()])
+    amount = DecimalField('Amount', validators=[DataRequired()])
+    calories_per_gram = DecimalField('Calories per gram', validators=[DataRequired()])
 
     class Meta:
         csrf=False
