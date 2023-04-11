@@ -1,0 +1,57 @@
+.calendar {
+  position: absolute;
+  opacity: .9;
+  /* display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px; */
+}
+
+.food-entry:hover {
+  background-color: rgb(203, 202, 211);
+}
+
+.food-entry {
+  display: flex;
+  justify-content: space-between;
+  color: rgb(0, 0, 0);
+  width: auto
+}
+
+.food-entry-amount {
+  /* background-color: rgb(121, 238, 187); */
+  width: 50px;
+  color: black;
+  border-color: rgb(5, 5, 5);
+  border-style: solid;
+  border: 50px;
+  /* opacity: 0; */
+}
+
+.food-entry-amount:hover {
+  /* background-color: rgb(203, 202, 211); */
+  width: 50px;
+  /* border-color: rgb(203, 202, 211); */
+}
+
+.food-diary-list {
+  /* background-color: rgb(121, 238, 187); */
+  width: 700px;
+  height: 400px;
+  border-color: rgb(5, 5, 5);
+  border-style: solid;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.food-diary-list::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-input-placeholder {
+  color: black;
+}

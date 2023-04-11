@@ -1,9 +1,23 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
+import { searchFoodsReducer } from './foodSearch';
+import { foodNutritionReducer } from './foodNutrition';
+import { searchExercisesReducer } from './exerciseSearch';
+import { exerciseDetailsReducer } from './exerciseDetails';
+import { searchFoodDiaryReducer } from './foodDiary';
+import { profileReducer } from './profile';
+import { searchExerciseDiaryReducer } from './exerciseDiary';
 
 const rootReducer = combineReducers({
   session,
+  searchFoodsReducer,
+  foodNutritionReducer,
+  searchExercisesReducer,
+  exerciseDetailsReducer,
+  searchFoodDiaryReducer,
+  profileReducer,
+  searchExerciseDiaryReducer
 });
 
 
