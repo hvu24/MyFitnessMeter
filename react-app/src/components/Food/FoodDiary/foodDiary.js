@@ -191,6 +191,9 @@ const FoodDiary = () => {
             .then((res) => {
                 setEntries(res?.foodEntries)
                 setCalories(res?.totalCalories)
+                setProtein(res?.totalProtein || 0)
+                setFat(res?.totalFat || 0)
+                setCarb(res?.totalCarb || 0)
             })
     };
 
@@ -222,6 +225,9 @@ const FoodDiary = () => {
             .then((res) => {
                 setEntries(res?.foodEntries)
                 setCalories(res?.totalCalories)
+                setProtein(res?.totalProtein || 0)
+                setFat(res?.totalFat || 0)
+                setCarb(res?.totalCarb || 0)
             })
     }
 
@@ -233,6 +239,9 @@ const FoodDiary = () => {
             .then((res) => {
                 setEntries(res?.foodEntries)
                 setCalories(res?.totalCalories)
+                setProtein(res?.totalProtein || 0)
+                setFat(res?.totalFat || 0)
+                setCarb(res?.totalCarb || 0)
             })
     }
 
@@ -256,6 +265,9 @@ const FoodDiary = () => {
             .then((res) => {
                 setEntries(res?.foodEntries)
                 setCalories(res?.totalCalories)
+                setProtein(res?.totalProtein || 0)
+                setFat(res?.totalFat || 0)
+                setCarb(res?.totalCarb || 0)
             })
     }
 
