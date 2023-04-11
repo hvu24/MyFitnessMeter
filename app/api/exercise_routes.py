@@ -21,8 +21,8 @@ def getExercises():
 def getDiary(year, month, day):
     diary = ExerciseDiary.query.filter(
         ExerciseDiary.date == date(year, month, day), ExerciseDiary.user_id == current_user.get_id()).first()
-    if diary is None:
-        return 'no diary for that date'
+    # if diary is None:
+    #     return 'no diary for that date'
     return diary.to_dict()
 
 
@@ -69,8 +69,8 @@ def addToDiary(year, month, day):
 def deleteDiary(year, month, day):
     diary = ExerciseDiary.query.filter(
         ExerciseDiary.date == date(year, month, day), ExerciseDiary.user_id == current_user.get_id()).first()
-    if diary is None:
-        return 'no diary for that date'
+    # if diary is None:
+    #     return 'no diary for that date'
     db.session.delete(diary)
     db.session.commit()
     return 'successfully deleted'

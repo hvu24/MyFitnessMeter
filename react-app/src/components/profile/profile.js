@@ -220,7 +220,7 @@ const UserProfile = () => {
     }
     const weightGoalRateChange = (e) => {
         setWeightGoalRate(e.target.value);
-        setWeightGoalCalories((e.target.value/0.25) * 125)
+        setWeightGoalCalories((e.target.value / 0.25) * 125)
         if ((weightGoal > weight && weightGoalRate > 0) || (weightGoal < weight && weightGoalRate < 0)) {
             dateMultiplier = 7 * ((weightGoal - weight) / weightGoalRate)
             if (dateMultiplier !== Infinity && dateMultiplier >= 0 && dateMultiplier !== NaN) {
@@ -394,7 +394,7 @@ const UserProfile = () => {
                     <label>
                         <select value={activity} onChange={(e) => {
                             setActivity(e.target.value)
-                            }}>
+                        }}>
                             {["None", "sedentary", "lightly_active", "moderately_active", "very_active"].map((ele, index) => {
                                 return <option value={ele}>{ele}</option>
                             })}

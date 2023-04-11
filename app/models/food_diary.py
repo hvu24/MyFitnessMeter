@@ -17,6 +17,18 @@ class FoodDiary(db.Model):
     def total_calories(self):
         return sum([entry.calories for entry in self.food_entries])
 
+    @hybrid_property
+    def total_protein(self):
+        return sum([entry.protein for entry in self.food_entries])
+
+    @hybrid_property
+    def total_fat(self):
+        return sum([entry.fat for entry in self.food_entries])
+
+    @hybrid_property
+    def total_carb(self):
+        return sum([entry.carb for entry in self.food_entries])
+
     user = db.relationship('User', back_populates='food_diaries')
     food_entries = db.relationship('FoodEntry', cascade="all, delete", back_populates='food_diaries')
 
@@ -29,5 +41,8 @@ class FoodDiary(db.Model):
             'updatedAt': self.updated_at,
             'userInfo': self.user.to_dict(),
             'totalCalories': self.total_calories,
+            'totalProtein': self.total_protein,
+            'totalFat': self.total_fat,
+            'totalCarb': self.total_carb,
             'foodEntries': [food_entry.to_dict() for food_entry in self.food_entries]
         }

@@ -39,7 +39,10 @@ def addToDiary(year, month, day):
             food_diary_id=diary.id,
             name=data['name'],
             amount=data['amount'],
-            calories_per_gram=data['calories_per_gram']
+            calories_per_gram=data['calories_per_gram'],
+            protein_per_gram=data['protein_per_gram'],
+            fat_per_gram=data['fat_per_gram'],
+            carb_per_gram=data['carb_per_gram']
         )
         db.session.add(new_entry)
         db.session.commit()
@@ -48,7 +51,10 @@ def addToDiary(year, month, day):
         food_diary_id=diary.id,
         name=data['name'],
         amount=data['amount'],
-        calories_per_gram=data['calories_per_gram']
+        calories_per_gram=data['calories_per_gram'],
+        protein_per_gram=data['protein_per_gram'],
+        fat_per_gram=data['fat_per_gram'],
+        carb_per_gram=data['carb_per_gram']
     )
     db.session.add(new_entry)
     db.session.commit()
@@ -60,8 +66,8 @@ def addToDiary(year, month, day):
 def deleteDiary(year, month, day):
     diary = FoodDiary.query.filter(
         FoodDiary.date == date(year, month, day), FoodDiary.user_id == current_user.get_id()).first()
-    if diary is None:
-        return "'no diary for that date'"
+    # if diary is None:
+    #     return "'no diary for that date'"
     db.session.delete(diary)
     db.session.commit()
     return 'successfully deleted'
@@ -91,7 +97,10 @@ def editEntry(year, month, day):
     entry = FoodEntry.query.filter(
         FoodEntry.id == data['id'], FoodEntry.food_diary_id == diary.id).first()
     entry.amount = data['amount']
-    entry.calories_per_gram=data['calories_per_gram']
+    entry.calories_per_gram = data['calories_per_gram']
+    entry.protein_per_gram = data['protein_per_gram']
+    entry.fat_per_gram=data['fat_per_gram']
+    entry.carb_per_gram=data['carb_per_gram']
     # for key, value in data.items():
     #     if hasattr(entry, key) and value is not None:
     #         setattr(entry, key, value)

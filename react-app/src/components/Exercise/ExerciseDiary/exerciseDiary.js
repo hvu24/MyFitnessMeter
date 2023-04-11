@@ -31,17 +31,22 @@ const ExerciseDiary = () => {
     }
 
     useEffect(() => {
+        dispatch(getExerciseDiary(payload))
+            .then((res) => {
+                setEntries(res?.exerciseEntries)
+                setCalories(res?.totalCalories || 0)
+            })
         dispatch(getProfile())
             .then((res) => {
                 if (res.id) {
                     setWeight(res?.weightInPounds)
                 }
             })
-        dispatch(getExerciseDiary(payload))
-            .then((res) => {
-                setEntries(res?.exerciseEntries)
-                setCalories(res?.totalCalories || 0)
-            })
+        // dispatch(getExerciseDiary(payload))
+        //     .then((res) => {
+        //         setEntries(res?.exerciseEntries)
+        //         setCalories(res?.totalCalories || 0)
+        //     })
     }, [dispatch, date]);
 
     // const handleModalSubmit = () => {

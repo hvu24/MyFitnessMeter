@@ -12,12 +12,27 @@ class FoodEntry(db.Model):
     name = db.Column(db.String, nullable=False)
     amount = db.Column(db.Float, nullable=False)
     calories_per_gram = db.Column(db.Float, nullable=False)
+    protein_per_gram = db.Column(db.Float, nullable=False)
+    fat_per_gram = db.Column(db.Float, nullable=False)
+    carb_per_gram = db.Column(db.Float, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
 
     @hybrid_property
     def calories(self):
         return self.calories_per_gram * self.amount
+
+    @hybrid_property
+    def protein(self):
+        return self.protein_per_gram * self.amount
+
+    @hybrid_property
+    def fat(self):
+        return self.fat_per_gram * self.amount
+
+    @hybrid_property
+    def carb(self):
+        return self.carb_per_gram * self.amount
 
 
     food_diaries = db.relationship('FoodDiary', back_populates='food_entries')
@@ -30,6 +45,12 @@ class FoodEntry(db.Model):
             'amount': self.amount,
             'caloriesPerGram': self.calories_per_gram,
             'calories': self.calories,
+            'proteinPerGram': self.protein_per_gram,
+            'protein': self.protein,
+            'fatPerGram': self.fat_per_gram,
+            'fat': self.fat,
+            'carbPerGram': self.carb_per_gram,
+            'carb': self.carb,
             'createdAt': self.created_at,
             'updatedAt': self.updated_at
         }

@@ -20,6 +20,9 @@ function FoodSearchModal({ date, onModalSubmit }) {
     const [foodAmount, setFoodAmount] = useState('')
     const [entries, setEntries] = useState([]);
     const [calorieAmount, setCalorieAmount] = useState('')
+    const [proteinAmount, setProteinAmount] = useState('')
+    const [fatAmount, setFatAmount] = useState('')
+    const [carbAmount, setCarbAmount] = useState('')
     const [calories, setCalories] = useState(0)
 
     const payload = {
@@ -286,7 +289,10 @@ function FoodSearchModal({ date, onModalSubmit }) {
         payload.body = {
             "name": searchTerm,
             "amount": foodAmount,
-            "calories_per_gram": calorieAmount
+            "calories_per_gram": calorieAmount,
+            "protein_per_gram": proteinAmount,
+            "fat_per_gram": fatAmount,
+            "carb_per_gram": carbAmount
         }
         dispatch(createFoodDiary(payload))
             .then((res) => {
@@ -355,6 +361,9 @@ function FoodSearchModal({ date, onModalSubmit }) {
                                     onChange={(e) => {
                                         setFoodAmount(e.target.value)
                                         setCalorieAmount(nutrition.nf_calories / nutrition.serving_weight_grams)
+                                        setProteinAmount(nutrition.nf_protein / nutrition.serving_weight_grams)
+                                        setFatAmount(nutrition.nf_total_fat / nutrition.serving_weight_grams)
+                                        setCarbAmount(nutrition.nf_total_carbohydrate / nutrition.serving_weight_grams)
                                     }}
                                 />
                             </label>
