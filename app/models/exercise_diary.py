@@ -17,6 +17,10 @@ class ExerciseDiary(db.Model):
     def total_calories(self):
         return sum([entry.calories for entry in self.exercise_entries])
 
+    # @hybrid_property
+    # def user_weight(self):
+    #     return self.user.profile[0].weight_in_pounds
+
     user = db.relationship('User', back_populates='exercise_diaries')
     exercise_entries = db.relationship('ExerciseEntry', cascade="all, delete", back_populates='exercise_diaries')
 
@@ -28,6 +32,8 @@ class ExerciseDiary(db.Model):
             'createdAt': self.created_at,
             'updatedAt': self.updated_at,
             'userInfo': self.user.to_dict(),
+            # 'userProfile': self.user.profile[0].to_dict(),
             'totalCalories': self.total_calories,
+            # 'userWeight': self.user_weight,
             'exerciseEntries': [exercise_entry.to_dict() for exercise_entry in self.exercise_entries]
         }

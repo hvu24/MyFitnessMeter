@@ -46,7 +46,7 @@ def addToDiary(year, month, day):
             exercise_diary_id=diary.id,
             name=data['name'],
             amount=data['amount'],
-            calories=data['calories'],
+            # calories=data['calories'],
             mets=data['mets']
         )
         db.session.add(new_entry)
@@ -56,7 +56,7 @@ def addToDiary(year, month, day):
         exercise_diary_id=diary.id,
         name=data['name'],
         amount=data['amount'],
-        calories=data['calories'],
+        # calories=data['calories'],
         mets=data['mets']
     )
     db.session.add(new_entry)
@@ -100,7 +100,7 @@ def editEntry(year, month, day):
     entry = ExerciseEntry.query.filter(
         ExerciseEntry.id == data['id'], ExerciseEntry.exercise_diary_id == diary.id).first()
     entry.amount = data['amount']
-    entry.calories = data['calories']
+    # entry.calories = data['calories']
     entry.mets=data['mets']
     # for key, value in data.items():
     #     if hasattr(entry, key) and value is not None:

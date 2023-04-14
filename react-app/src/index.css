@@ -1,1 +1,6 @@
 /* TODO Add site wide styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    /* font-style: italic; */
+}

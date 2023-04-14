@@ -16,7 +16,7 @@ function ExerciseSearchModal({ date, onModalSubmit }) {
     const [entries, setEntries] = useState([]);
     const [exercises, setExercises] = useState({});
     const [recommendations, setRecommendations] = useState([]);
-    const [weight, setWeight] = useState(0)
+    const [weight, setWeight] = useState(100)
     const [calories, setCalories] = useState(0)
     const [mets, setMets] = useState(0)
 
@@ -81,7 +81,7 @@ function ExerciseSearchModal({ date, onModalSubmit }) {
     }
 
     return (
-        <div style={{ width: "600px", height: "600px" }}>
+        <div className='exercise-diary-search-container'>
             <div>
                 <form onSubmit={entrySubmit}>
                     <div style={{ display: "flex", justifyContent: 'center' }}>
@@ -89,7 +89,7 @@ function ExerciseSearchModal({ date, onModalSubmit }) {
                     </div>
                     <div style={{ display: "flex", justifyContent: 'space-between' }}>
                         <div className='exercise-search' style={{ display: "flex", justifyContent: 'space-between' }}>
-                            <div className='search-list' style={{ width: "300px", height: "300px" }}>
+                            <div className='' style={{ width: "300px", height: "300px" }}>
                                 {recommendations.map((recommendation, index) => (
                                     <div className='search-entry' key={index} onClick={() => handleSearch(recommendation)}>{recommendation}</div>
                                 ))}
@@ -110,7 +110,7 @@ function ExerciseSearchModal({ date, onModalSubmit }) {
                                                 setMets(exerciseNameMetObj[searchTerm])
                                             }}
                                         />
-                                        <button type="submit" className='search-bar-button'>
+                                        <button type="submit">
                                             <i class="fa-solid fa-dumbbell"></i>
                                         </button>
                                     </label>

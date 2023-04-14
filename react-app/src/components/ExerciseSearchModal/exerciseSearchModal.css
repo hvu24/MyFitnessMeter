@@ -1,4 +1,4 @@
-.search-bar{
+.exercise-diary-search-container .search-bar{
     width: 250px;
     height: 50px;
     padding: 0px 10px;
@@ -8,37 +8,17 @@
     font-size: 16px;
     font-weight: 200;
     border: none;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-.search-bar-container{
-    display: flex;
-    margin-right: 500px;
+.exercise-diary-search-container .search-entry{
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-.search-bar-button{
-    box-sizing: border-box;
-    text-align: center;
-    background-color: rgb(0, 107, 214);
-    color: rgb(255, 255, 255);
-    border-radius: 10%;
-    width: 60px;
-    height: 51px;
-    border: none;
-    cursor: pointer;
+.exercise-diary-search-container .search-entry:hover{
+    background-color: rgb(0, 136, 255);
+    border-radius: 3px;
 }
 
-.search-entry:hover{
-    background-color: red;
-}
-
-.search-common-list{
-    /* position: absolute; */
-    background-color: rgb(121, 220, 238);
-    width: 270px;
-}
-
-.search-branded-list{
-    /* position: absolute; */
-    background-color: rgb(84, 250, 173);
-    width: 270px;
-}

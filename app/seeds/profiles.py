@@ -8,7 +8,7 @@ def seed_user_profiles():
         user_id = 1,
         height_in_inches = 68,
         sex = 'female',
-        birthday = date(1995, 1, 1),
+        birthday = date(2005, 1, 1),
         weight_in_pounds = 170,
         body_fat = 12.8,
         protein_ratio = 25,

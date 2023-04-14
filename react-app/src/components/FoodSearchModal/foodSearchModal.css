@@ -1,25 +1,30 @@
-.search-bar{
+.food-diary-search-container .food-search-bar {
     width: 250px;
     height: 50px;
     padding: 0px 10px;
-    overflow:auto;
+    overflow: auto;
     cursor: text;
-    box-shadow: 0 0 10px rgba(142, 142, 142, 0.5);
+    box-shadow: 0 0 10px rgba(114, 114, 114, 0.5);
     font-size: 16px;
     font-weight: 200;
     border: none;
+    margin-top: 10px;
 }
 
-.search-bar-container{
+.food-diary-search-container {
     display: flex;
-    margin-right: 500px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
 }
 
-.search-bar-button{
+
+.food-diary-search-container .search-bar-button {
+    margin-top: 10px;
     box-sizing: border-box;
     text-align: center;
     background-color: rgb(0, 107, 214);
-    color: rgb(255, 255, 255);
+    /* color: rgb(255, 255, 255); */
     border-radius: 10%;
     width: 60px;
     height: 51px;
@@ -27,18 +32,24 @@
     cursor: pointer;
 }
 
-.search-entry:hover{
-    background-color: red;
+.food-diary-search-container .search-entry {
+    border-radius: 3px;
+}
+.food-diary-search-container .search-entry:hover {
+    background-color: rgb(0, 136, 255);
+    border-radius: 3px;
 }
 
-.search-common-list{
+.food-diary-search-container .common-list {
     /* position: absolute; */
-    background-color: rgb(121, 220, 238);
+    /* background-color: rgb(121, 220, 238); */
     width: 270px;
+    padding: 10px;
 }
 
-.search-branded-list{
+.food-diary-search-container .branded-list{
     /* position: absolute; */
-    background-color: rgb(84, 250, 173);
+    /* background-color: rgb(84, 250, 173); */
     width: 270px;
+    padding: 10px;
 }
