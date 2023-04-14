@@ -360,7 +360,7 @@ const FoodSearchBar = () => {
                     <div>
                         {nutrition && nutrition.food_name && <h5 style={{ display: "flex", justifyContent: 'center' }}>Nutrition Facts</h5>}
                         <div className='branded-list'>
-                            {nutrition && nutrition.full_nutrients && <div><b>Food name  :</b>{nutrition.food_name}</div>}
+                            {nutrition && nutrition.full_nutrients && <div><b>Food name : </b>{nutrition.food_name}</div>}
                             {nutrition && nutrition.full_nutrients && <div><b>Serving size : </b>{nutrition.serving_weight_grams} g</div>}
                             {nutrition && nutrition.full_nutrients && <div><b>Calories : </b>{nutrition.nf_calories} kcal</div>}
                             {nutrition && nutrition.full_nutrients && <div><b>Calories per gram : </b>{nutrition.nf_calories / nutrition.serving_weight_grams} kcal</div>}
