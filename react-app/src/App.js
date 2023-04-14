@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
@@ -26,6 +26,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/" >
+            <Redirect to='/food/search' />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
@@ -34,6 +37,7 @@ function App() {
           </Route>
           <Route path="/food/search">
             <FoodSearchBar />
+            <Footer/>
           </Route>
           {/* <Route path="/exercise/search">
             <ExerciseSearchBar />
@@ -41,21 +45,24 @@ function App() {
           <Route path='/food/diary'>
             <ProtectedRoute>
               <FoodDiary />
+              <Footer/>
             </ProtectedRoute>
           </Route>
           <Route path='/exercise/diary'>
             <ProtectedRoute>
               <ExerciseDiary />
+              <Footer/>
             </ProtectedRoute>
           </Route>
           <Route path='/profile'>
             <ProtectedRoute>
               <UserProfile />
+              <Footer/>
             </ProtectedRoute>
           </Route>
         </Switch>
       )}
-      <Footer/>
+
     </>
   );
 }
