@@ -8,27 +8,27 @@ def seed_users():
         username='Demo',
         email='demo@aa.io',
         password='password',
-        first_name="Billy",
-        last_name="Jean",
-        user_picture_url='https://m.media-amazon.com/images/M/MV5BMTg4Nzg1MTYxMl5BMl5BanBnXkFtZTgwMjUxNDMyODE@._V1_.jpg'
+        # first_name="Billy",
+        # last_name="Jean",
+        # user_picture_url='https://m.media-amazon.com/images/M/MV5BMTg4Nzg1MTYxMl5BMl5BanBnXkFtZTgwMjUxNDMyODE@._V1_.jpg'
     )
     marnie = User(
         id=2,
         username='marnie',
         email='marnie@aa.io',
         password='password',
-        first_name="Mike",
-        last_name="Tyson",
-        user_picture_url='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Mike_Tyson_2019_by_Glenn_Francis.jpg/1200px-Mike_Tyson_2019_by_Glenn_Francis.jpg'
+        # first_name="Mike",
+        # last_name="Tyson",
+        # user_picture_url='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Mike_Tyson_2019_by_Glenn_Francis.jpg/1200px-Mike_Tyson_2019_by_Glenn_Francis.jpg'
     )
     bobbie = User(
         id=3,
         username='bobbie',
         email='bobbie@aa.io',
         password='password',
-        first_name="Jake",
-        last_name="Paul",
-        user_picture_url='https://images.daznservices.com/di/library/DAZN_News/28/44/jake-paulnov2022_19ds7ztrgfx6o1subt8igwogil.jpg?t=1996720182&quality=60&h=450'
+        # first_name="Jake",
+        # last_name="Paul",
+        # user_picture_url='https://images.daznservices.com/di/library/DAZN_News/28/44/jake-paulnov2022_19ds7ztrgfx6o1subt8igwogil.jpg?t=1996720182&quality=60&h=450'
     )
 
     db.session.add(demo)

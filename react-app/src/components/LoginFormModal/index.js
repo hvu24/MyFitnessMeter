@@ -21,8 +21,13 @@ function LoginFormModal() {
     }
   };
 
+  const handeClick = () => {
+    setEmail('demo@aa.io')
+    setPassword('password')
+  }
+
   return (
-    <>
+    <div className="modal-container">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -50,7 +55,8 @@ function LoginFormModal() {
         </label>
         <button type="submit">Log In</button>
       </form>
-    </>
+      <p>Try it out! <button onClick={handeClick}>Demo Login</button></p>
+    </div>
   );
 }
 

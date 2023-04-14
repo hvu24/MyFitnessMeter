@@ -303,11 +303,11 @@ function FoodSearchModal({ date, onModalSubmit }) {
     }
 
     return (
-        <div>
+        <div className='food-diary-search-container'>
             <div>
                 <form onSubmit={handleSubmit}>
                     <div style={{ display: "flex", justifyContent: 'center' }}>
-                        <input className='search-bar' placeholder='Search...' type="text" value={searchTerm} onChange={handleInputChange} />
+                        <input className='food-search-bar' placeholder='Search...' type="text" value={searchTerm} onChange={handleInputChange} />
                         <button type="submit" className='search-bar-button'>
                             <i class="fa-solid fa-utensils"></i>
                         </button>
@@ -316,7 +316,7 @@ function FoodSearchModal({ date, onModalSubmit }) {
                     <div style={{ display: "flex", justifyContent: 'space-between' }}>
                         <div>
                             {foods && foods.common && <h5 style={{ display: "flex", justifyContent: 'center' }}>Common foods</h5>}
-                            <div className='search-common-list'>
+                            <div className='common-list'>
                                 {foods && foods.common && foods?.common.map((food, index) => (
                                     <div className='search-entry' key={index} onClick={() => handleSearch(food.food_name)}>{food.food_name}</div>
                                 ))}
@@ -324,7 +324,7 @@ function FoodSearchModal({ date, onModalSubmit }) {
                         </div>
                         <div>
                             {foods && foods.branded && <h5 style={{ display: "flex", justifyContent: 'center' }}>Branded foods</h5>}
-                            <div className='search-branded-list'>
+                            <div className='branded-list'>
                                 {foods && foods.branded && foods?.branded.map((food, index) => (
                                     <div className='search-entry' key={index} onClick={() => handleSearch(food.food_name)}>{food.food_name}</div>
                                 ))}
@@ -337,14 +337,14 @@ function FoodSearchModal({ date, onModalSubmit }) {
             <div style={{ display: "flex", justifyContent: 'space-between' }}>
                 <div>
                     {nutrition && nutrition.food_name && <h5 style={{ display: "flex", justifyContent: 'center' }}>Nutrition Facts</h5>}
-                    <div className='search-branded-list'>
-                        {nutrition && nutrition.full_nutrients && <div>Food name: {nutrition.food_name}</div>}
-                        {nutrition && nutrition.full_nutrients && <div>Serving size: {nutrition.serving_weight_grams}grams</div>}
-                        {nutrition && nutrition.full_nutrients && <div>Calories: {nutrition.nf_calories}kcal</div>}
-                        {nutrition && nutrition.full_nutrients && <div>Calories per gram: {nutrition.nf_calories / nutrition.serving_weight_grams}kcal</div>}
+                    <div className=''>
+                        {nutrition && nutrition.full_nutrients && <div><b>Food name</b> : {nutrition.food_name}</div>}
+                        {nutrition && nutrition.full_nutrients && <div><b>Serving size</b> : {nutrition.serving_weight_grams} g</div>}
+                        {nutrition && nutrition.full_nutrients && <div><b>Calories</b> : {nutrition.nf_calories }kcal</div>}
+                        {nutrition && nutrition.full_nutrients && <div><b>Calories per gram</b> : {nutrition.nf_calories / nutrition.serving_weight_grams} kcal</div>}
                         {nutrition && nutrition.full_nutrients && nutrition?.full_nutrients.map((nutrient, index) => {
                             // if (nutrient.attr_id === 208) return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
-                            if (showNutrientDetail(nutrient.attr_id).name !== 'none') return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
+                            if (showNutrientDetail(nutrient.attr_id).name !== 'none') return <div className='' key={index}><b>{showNutrientDetail(nutrient.attr_id).name}</b> : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
                         })}
                     </div>
                 </div>

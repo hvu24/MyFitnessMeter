@@ -21,14 +21,14 @@ const FoodSearchBar = () => {
     useEffect(() => {
         dispatch(getSearchFoods(searchTerm))
         dispatch(getProfile())
-        .then((res) => {
-            if (res.id) {
-                setCalorieGoal(res?.basalMetabolicRate + res?.activityCalories + res?.weightGoalCalories)
-                setProteinGoal((res?.basalMetabolicRate + res?.activityCalories + res?.weightGoalCalories)*(res?.proteinRatio/100)/4)
-                setFatGoal((res?.basalMetabolicRate + res?.activityCalories + res?.weightGoalCalories)*(res?.fatRatio/100)/9)
-                setCarbGoal((res?.basalMetabolicRate + res?.activityCalories + res?.weightGoalCalories)*(res?.carbohydrateRatio/100)/4)
-            }
-        })
+            .then((res) => {
+                if (res?.id) {
+                    setCalorieGoal(res?.basalMetabolicRate + res?.activityCalories + res?.weightGoalCalories)
+                    setProteinGoal((res?.basalMetabolicRate + res?.activityCalories + res?.weightGoalCalories) * (res?.proteinRatio / 100) / 4)
+                    setFatGoal((res?.basalMetabolicRate + res?.activityCalories + res?.weightGoalCalories) * (res?.fatRatio / 100) / 9)
+                    setCarbGoal((res?.basalMetabolicRate + res?.activityCalories + res?.weightGoalCalories) * (res?.carbohydrateRatio / 100) / 4)
+                }
+            })
     }, [dispatch, searchTerm]);
 
     const handleInputChange = async (event) => {
@@ -324,91 +324,93 @@ const FoodSearchBar = () => {
 
     return (
 
-        <div>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <div style={{ display: "flex", justifyContent: 'center' }}>
-                        <input className='search-bar' placeholder='Search...' type="text" value={searchTerm} onChange={handleInputChange} />
-                        <button type="submit" className='search-bar-button'>
-                            <i class="fa-solid fa-utensils"></i>
-                        </button>
-                    </div>
-                    {/* <h5>{date.toLocaleString()}</h5> */}
-                    <div style={{ display: "flex", justifyContent: 'space-around' }}>
+        <div className='food-search-bar-container'>
+            <div className='food-search-container'>
+                <div style={{ marginTop: '25px', marginLeft: '200px' }}>
+                    <form onSubmit={handleSubmit}>
                         <div>
-                            {foods && foods.common && <h5 style={{ display: "flex", justifyContent: 'center' }}>Common foods</h5>}
-                            <div className='search-common-list'>
-                                {foods && foods.common && foods?.common.map((food, index) => (
-                                    <div className='search-entry' key={index} onClick={() => handleSearch(food.food_name)}>{food.food_name}</div>
-                                ))}
-                            </div>
+                            <input className='search-bar' placeholder='Search...' type="text" value={searchTerm} onChange={handleInputChange} />
+                            <button type="submit" className='search-bar-button'>
+                                <i class="fa-solid fa-utensils"></i>
+                            </button>
                         </div>
-                        <div>
-                            {foods && foods.branded && <h5 style={{ display: "flex", justifyContent: 'center' }}>Branded foods</h5>}
-                            <div className='search-branded-list'>
-                                {foods && foods.branded && foods?.branded.map((food, index) => (
-                                    <div className='search-entry' key={index} onClick={() => handleSearch(food.food_name)}>{food.food_name}</div>
-                                ))}
-                            </div>
+                        {/* <h5>{date.toLocaleString()}</h5> */}
+                    </form>
+                </div>
+                <div style={{ display: "flex", justifyContent: 'space-around', marginTop: '0px' }}>
+                    <div>
+                        {foods && foods.common && <h5 style={{ display: "flex", justifyContent: 'center' }}>Common Foods</h5>}
+                        <div className='common-list'>
+                            {foods && foods.common && foods?.common.map((food, index) => (
+                                <div className='entry' key={index} onClick={() => handleSearch(food.food_name)}>{food.food_name}</div>
+                            ))}
                         </div>
                     </div>
-                </form>
-            </div>
-
-            <div style={{ display: "flex", justifyContent: 'space-between' }}>
-                <div>
-                    {nutrition && nutrition.food_name && <h5 style={{ display: "flex", justifyContent: 'center' }}>Nutrition Facts</h5>}
-                    <div className='search-branded-list'>
-                        {nutrition && nutrition.full_nutrients && <div>Food name: {nutrition.food_name}</div>}
-                        {nutrition && nutrition.full_nutrients && <div>Serving size: {nutrition.serving_weight_grams}grams</div>}
-                        {nutrition && nutrition.full_nutrients && <div>Calories: {nutrition.nf_calories}kcal</div>}
-                        {nutrition && nutrition.full_nutrients && <div>Calories per gram: {nutrition.nf_calories / nutrition.serving_weight_grams}kcal</div>}
-                        {nutrition && nutrition.full_nutrients && nutrition?.full_nutrients.map((nutrient, index) => {
-                            // if (nutrient.attr_id === 208) return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
-                            if (showNutrientDetail(nutrient.attr_id).name !== 'none') return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
-                        })}
+                    <div>
+                        {foods && foods.branded && <h5 style={{ display: "flex", justifyContent: 'center' }}>Branded Foods</h5>}
+                        <div className='branded-list'>
+                            {foods && foods.branded && foods?.branded.map((food, index) => (
+                                <div className='entry' key={index} onClick={() => handleSearch(food.food_name)}>{food.food_name}</div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-                <div>
-                    {nutrition && nutrition.food_name && <h5 style={{ display: "flex", justifyContent: 'center' }}>RDA</h5>}
+
+                <div style={{ display: "flex", justifyContent: 'space-between' }}>
                     <div>
-                        {nutrition && nutrition.full_nutrients && nutrition?.full_nutrients.map((nutrient, index) => {
-                            // if (nutrient.attr_id === 208) return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
-                            if (showNutrientDetail(nutrient.attr_id).name !== 'none' && showNutrientDetail(nutrient.attr_id).target !== 0) return <div><Plot
-                                data={[
-                                    {
-                                        type: 'indicator',
-                                        mode: 'gauge+number+delta',
-                                        value: nutrient.value,
-                                        delta: { reference: showNutrientDetail(nutrient.attr_id).target },
-                                        title: { text: showNutrientDetail(nutrient.attr_id).name, font: { size: 15 } },
-                                        gauge: {
-                                            axis: { range: [null, showNutrientDetail(nutrient.attr_id).target], tickwidth: 1, tickcolor: 'black' },
-                                            bar: { color: 'blue' },
-                                            shape: 'bullet',
-                                            bgcolor: 'white',
-                                            borderwidth: 2,
-                                            bordercolor: 'gray',
-                                            steps: [
-                                                { range: [0, showNutrientDetail(nutrient.attr_id).target * .25], color: '#ff1a1a' },
-                                                { range: [showNutrientDetail(nutrient.attr_id).target * .25, showNutrientDetail(nutrient.attr_id).target * .5], color: '#ff9933' },
-                                                { range: [showNutrientDetail(nutrient.attr_id).target * .5, showNutrientDetail(nutrient.attr_id).target * .75], color: '#ffff1a' },
-                                                { range: [showNutrientDetail(nutrient.attr_id).target * .75, showNutrientDetail(nutrient.attr_id).target], color: '#33cc33' },
-                                            ],
+                        {nutrition && nutrition.food_name && <h5 style={{ display: "flex", justifyContent: 'center' }}>Nutrition Facts</h5>}
+                        <div className='branded-list'>
+                            {nutrition && nutrition.full_nutrients && <div><b>Food name  :</b>{nutrition.food_name}</div>}
+                            {nutrition && nutrition.full_nutrients && <div><b>Serving size : </b>{nutrition.serving_weight_grams} g</div>}
+                            {nutrition && nutrition.full_nutrients && <div><b>Calories : </b>{nutrition.nf_calories} kcal</div>}
+                            {nutrition && nutrition.full_nutrients && <div><b>Calories per gram : </b>{nutrition.nf_calories / nutrition.serving_weight_grams} kcal</div>}
+                            {nutrition && nutrition.full_nutrients && nutrition?.full_nutrients.map((nutrient, index) => {
+                                // if (nutrient.attr_id === 208) return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
+                                if (showNutrientDetail(nutrient.attr_id).name !== 'none') return <div className='' key={index}><b>{showNutrientDetail(nutrient.attr_id).name}</b> : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
+                            })}
+                        </div>
+                    </div>
+                    <div>
+                        {nutrition && nutrition.food_name && <h5 style={{ display: "flex", justifyContent: 'center' }}>Recommended Daily Intake</h5>}
+                        <div className='rda'>
+                            {nutrition && nutrition.full_nutrients && nutrition?.full_nutrients.map((nutrient, index) => {
+                                // if (nutrient.attr_id === 208) return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
+                                if (showNutrientDetail(nutrient.attr_id).name !== 'none' && showNutrientDetail(nutrient.attr_id).target !== 0) return <div><Plot
+                                    data={[
+                                        {
+                                            type: 'indicator',
+                                            mode: 'gauge+number+delta',
+                                            value: nutrient.value,
+                                            delta: { reference: showNutrientDetail(nutrient.attr_id).target },
+                                            title: { text: showNutrientDetail(nutrient.attr_id).name, font: { size: 15 } },
+                                            gauge: {
+                                                axis: { range: [null, showNutrientDetail(nutrient.attr_id).target], tickwidth: 1, tickcolor: 'black' },
+                                                bar: { color: 'blue' },
+                                                shape: 'bullet',
+                                                bgcolor: 'white',
+                                                borderwidth: 2,
+                                                bordercolor: 'gray',
+                                                steps: [
+                                                    { range: [0, showNutrientDetail(nutrient.attr_id).target * .25], color: '#ff1a1a' },
+                                                    { range: [showNutrientDetail(nutrient.attr_id).target * .25, showNutrientDetail(nutrient.attr_id).target * .5], color: '#ff9933' },
+                                                    { range: [showNutrientDetail(nutrient.attr_id).target * .5, showNutrientDetail(nutrient.attr_id).target * .75], color: '#ffff1a' },
+                                                    { range: [showNutrientDetail(nutrient.attr_id).target * .75, showNutrientDetail(nutrient.attr_id).target], color: '#33cc33' },
+                                                ],
+                                            },
                                         },
-                                    },
-                                ]}
-                                layout={
-                                    {
-                                        width: 700,
-                                        height: 20,
-                                        margin: { t: 0, r: 50, l: 200, b: 0 },
-                                        paper_bgcolor: 'white',
+                                    ]}
+                                    layout={
+                                        {
+                                            width: 500,
+                                            height: 20,
+                                            margin: { t: 0, r: 150, l: 200, b: 0 },
+                                            paper_bgcolor: 'rgb(255, 255, 255, 0.0)',
+                                        }
                                     }
-                                }
-                                style={{ width: '100%', height: '100%' }}
-                            /></div>
-                        })}
+                                    style={{ width: '100%', height: '100%' }}
+                                /></div>
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,7 @@ import OpenModalButton from '../../OpenModalButton';
 import FoodSearchModal from '../../FoodSearchModal/foodSearchModal';
 import Plot from 'react-plotly.js';
 import { getProfile } from '../../../store/profile';
+import { getExerciseDiary } from '../../../store/exerciseDiary';
 
 const FoodDiary = () => {
     const [date, setDate] = useState(new Date());
@@ -29,6 +30,7 @@ const FoodDiary = () => {
     const [proteinGoal, setProteinGoal] = useState(0)
     const [fatGoal, setFatGoal] = useState(0)
     const [carbGoal, setCarbGoal] = useState(0)
+    const [caloriesBurned, setCaloriesBurned] = useState(0)
     const dispatch = useDispatch();
     // const diary = useSelector((state) => state?.searchFoodDiaryReducer)
 
@@ -38,20 +40,20 @@ const FoodDiary = () => {
             type: 'indicator',
             mode: 'gauge+number+delta',
             value: Math.round(calories),
-            delta: { reference: calorieGoal },
+            delta: { reference: (calorieGoal + caloriesBurned) },
             title: { text: 'Calories (kcal)', font: { size: 15 } },
             gauge: {
-                axis: { range: [null, calorieGoal], tickwidth: 1, tickcolor: 'black' },
+                axis: { range: [null, (calorieGoal + caloriesBurned)], tickwidth: 1, tickcolor: 'black' },
                 bar: { color: '#33cc33' },
                 // shape: 'bullet',
                 bgcolor: 'white',
                 borderwidth: 2,
                 bordercolor: 'gray',
                 steps: [
-                    { range: [0, calorieGoal * .25], color: '#ff1a1a' },
-                    { range: [calorieGoal * .25, calorieGoal * .5], color: '#ff9933' },
-                    { range: [calorieGoal * .5, calorieGoal * .75], color: '#ffff1a' },
-                    { range: [calorieGoal * .75, calorieGoal], color: '#33cc33' },
+                    { range: [0, (calorieGoal + caloriesBurned) * .25], color: '#ff1a1a' },
+                    { range: [(calorieGoal + caloriesBurned) * .25, (calorieGoal + caloriesBurned) * .5], color: '#ff9933' },
+                    { range: [(calorieGoal + caloriesBurned) * .5, (calorieGoal + caloriesBurned) * .75], color: '#ffff1a' },
+                    { range: [(calorieGoal + caloriesBurned) * .75, (calorieGoal + caloriesBurned)], color: '#33cc33' },
                 ],
             },
         },
@@ -60,7 +62,8 @@ const FoodDiary = () => {
         width: 920,
         height: 200,
         margin: { t: 50, r: 0, l: 0, b: 50 },
-        paper_bgcolor: 'white',
+        plot_bgcolor: 'transparent',
+        paper_bgcolor: 'transparent'
         // grid: { rows: 1, columns: 1, pattern: "independent" },
     };
 
@@ -92,7 +95,8 @@ const FoodDiary = () => {
         width: 250,
         height: 200,
         margin: { t: 50, r: 0, l: 0, b: 50 },
-        paper_bgcolor: 'white',
+        plot_bgcolor: 'transparent',
+        paper_bgcolor: 'transparent'
         // grid: { rows: 1, columns: 1, pattern: "independent" },
     };
 
@@ -123,7 +127,8 @@ const FoodDiary = () => {
         width: 250,
         height: 200,
         margin: { t: 50, r: 0, l: 0, b: 50 },
-        paper_bgcolor: 'white',
+        plot_bgcolor: 'transparent',
+        paper_bgcolor: 'transparent'
         // grid: { rows: 1, columns: 1, pattern: "independent" },
     };
 
@@ -154,7 +159,8 @@ const FoodDiary = () => {
         width: 250,
         height: 200,
         margin: { t: 50, r: 0, l: 0, b: 50 },
-        paper_bgcolor: 'white',
+        plot_bgcolor: 'transparent',
+        paper_bgcolor: 'transparent'
         // grid: { rows: 1, columns: 1, pattern: "independent" },
     };
 
@@ -174,6 +180,10 @@ const FoodDiary = () => {
                 setProtein(res?.totalProtein || 0)
                 setFat(res?.totalFat || 0)
                 setCarb(res?.totalCarb || 0)
+            })
+        dispatch(getExerciseDiary(payload))
+            .then((res) => {
+                setCaloriesBurned(res?.totalCalories || 0)
             })
         dispatch(getProfile())
             .then((res) => {
@@ -272,17 +282,18 @@ const FoodDiary = () => {
     }
 
     return (
-        <div>
-            <div>
+        <div className='food-diary-background'>
+            <div className='food-diary-div'>
                 <h1>{date.toLocaleString('en-US', { month: 'long', year: 'numeric', day: 'numeric' })}</h1> {' '}
-                <input type="submit" value={calenderButton} onClick={onClick} />
+                <input className='calendar-button' type="submit" value={calenderButton} onClick={onClick} />
                 {showCalender ? <Calendar className='calendar' onChange={onChange} value={date} /> : null}
                 <h5></h5>
-                <OpenModalButton
-                    buttonText="Add food from database"
-                    modalComponent={<FoodSearchModal onModalSubmit={handleModalSubmit} date={date} />}
-                />
-                <h5></h5>
+                <div className='add-food'>
+                    <OpenModalButton
+                        buttonText="Add food from database"
+                        modalComponent={<FoodSearchModal onModalSubmit={handleModalSubmit} date={date} />}
+                    />
+                </div>
                 {/* <form method='POST' onSubmit={entrySubmit}>
                 <label className=''>Food Name:
                     <input
@@ -316,10 +327,10 @@ const FoodDiary = () => {
                 <div className='food-diary-list'>
                     {entries && entries.length > 0 ? entries.map((entry, index) => {
                         return <div style={{ display: "flex", justifyContent: 'space-between' }}>
-                            <div className='food-entry' key={index} >
+                            <div style={{ width: '234px', height: '100%' }} className='food-entry' key={index} >
                                 {entry.name}
                             </div>
-                            <div>
+                            <div style={{ width: '234px', height: '100%', display: 'flex', justifyContent: 'center' }}>
                                 <input
                                     className='food-entry-amount'
                                     type="number"
@@ -342,7 +353,7 @@ const FoodDiary = () => {
                                     }}
                                 />grams {' '}
                             </div>
-                            <div>
+                            <div style={{ width: '234px', height: '100%', display: 'flex', justifyContent: 'right' }}>
                                 {Math.round(entry.calories) + ' kcal'}
                                 <button type="submit" onClick={() => entryDeleteHandler(entry.id)}><i class="fa-solid fa-trash-can"></i></button>
                             </div>
@@ -350,31 +361,32 @@ const FoodDiary = () => {
 
                     }) : <>No food entries for this date.</>}
                 </div>
-                <button type="submit" onClick={() => diaryDeleteHandler()}>Clear Diary</button>
-                <h1>Calories consumed: {Math.round(calories)}</h1>
-                <h1>Calorie goal: {Math.round(calorieGoal)}</h1>
-            </div>
-            <div><Plot
-                data={data1}
-                layout={layout1}
-                style={{ width: '100%', height: '100%' }}
-            /></div>
-            <div style={{ display: "flex", justifyContent: 'space-between' }}>
+                <button className='clear-diary' type="submit" onClick={() => diaryDeleteHandler()}>Clear Diary</button>
+                <h3>Calories consumed: {Math.round(calories)}</h3>
+                <h3>Calories burned: {Math.round(caloriesBurned)}</h3>
+                <h3>Calorie goal: {Math.round(calorieGoal + caloriesBurned)}</h3>
                 <div><Plot
-                    data={data2}
-                    layout={layout2}
-                // style={{ width: '100%', height: '100%' }}
+                    data={data1}
+                    layout={layout1}
+                    style={{ width: '100%', height: '100%' }}
                 /></div>
-                <div><Plot
-                    data={data3}
-                    layout={layout3}
-                // style={{ width: '100%', height: '100%' }}
-                /></div>
-                <div><Plot
-                    data={data4}
-                    layout={layout4}
-                // style={{ width: '100%', height: '100%' }}
-                /></div>
+                <div style={{ display: "flex", justifyContent: 'space-around' }}>
+                    <div><Plot
+                        data={data2}
+                        layout={layout2}
+                    // style={{ width: '100%', height: '100%' }}
+                    /></div>
+                    <div><Plot
+                        data={data3}
+                        layout={layout3}
+                    // style={{ width: '100%', height: '100%' }}
+                    /></div>
+                    <div><Plot
+                        data={data4}
+                        layout={layout4}
+                    // style={{ width: '100%', height: '100%' }}
+                    /></div>
+                </div>
             </div>
         </div>
     );

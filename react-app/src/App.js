@@ -11,6 +11,7 @@ import FoodDiary from "./components/Food/FoodDiary/foodDiary";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UserProfile from "./components/profile/profile";
 import ExerciseDiary from "./components/Exercise/ExerciseDiary/exerciseDiary";
+import Footer from "./components/Footer/footer";
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer/>
     </>
   );
 }

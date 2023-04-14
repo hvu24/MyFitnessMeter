@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import "./SearchBar.css"
+// import "./SearchBar.css"
 import { getSearchExercises } from '../../../store/exerciseSearch';
 import { getExerciseDetails } from '../../../store/exerciseDetails';
 
