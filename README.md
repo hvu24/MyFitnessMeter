@@ -9,9 +9,9 @@ MyFitnessMeter is my attempt at creating a fitness tracking app which allows use
 ##### Food Search Page
 ![FoodSearch]
 
-[FoodDiary]: FoodDiary.png
-[FitnessProfile]: FitnessProfile.png
-[FoodSearch]: FoodSearch.png
+[FoodDiary]: FoodDiary.PNG
+[FitnessProfile]: FitnessProfile.PNG
+[FoodSearch]: FoodSearch.PNG
 
 
 
