@@ -37,13 +37,14 @@
   color: rgb(76, 0, 255)
 }
 
-.no-bullet {
-  list-style: none;
+.nav-div {
   display: flex;
   justify-content: space-around;
-  position: fixed;
-  /* top: 0; */
-  width: 90%;
+  background-color: grey;
+  /* list-style: none; */
+  position: sticky;
+  top: 0;
+  /* width: 100%; */
 }
 
 .link:hover {
