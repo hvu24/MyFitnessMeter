@@ -18,7 +18,7 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    height: 2200px;
+    height: 2300px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -70,7 +70,7 @@
 
 .food-search-container {
     margin-top: 100px;
-    height: 2000px;
+    height: 2100px;
     background-color: rgb(255, 255, 255, 0.7);
     border-radius: 10px;
 }

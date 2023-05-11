@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { getProfile, editProfile, resetProfile, createProfile } from '../../store/profile';
 import Plot from 'react-plotly.js';
 import './profile.css'
+import Container from 'react-bootstrap/Container'
 
 
 const UserProfile = () => {
@@ -369,126 +370,128 @@ const UserProfile = () => {
 
 
     return (
-        <div className='profile-container-background'>
-            <div className='profile-container'>
-                <div style={{ display: "flex", justifyContent: 'center' }}>
-                    <button className="" type="submit" onClick={resetProfileHandler}>Reset profile</button>
-                </div>
-                <form>
-                    <div onChange={genderHandler} style={{ display: "flex", justifyContent: 'space-between' }}>Sex
-                        <label><input type='radio' name='sex' value='male' checked={gender === 'male'}></input>Male</label>
-                        <label><input type='radio' name='sex' value='female' checked={gender === 'female'}></input>Female</label>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>Birthday
-                        <label><input onChange={birthdayHandler} type='date' defaultValue={birthday}></input></label>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>Age
-                        <label>{age}{' years old'}</label>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>{"Height "}
-                        <label>feet
-                            <select value={feet} onChange={(e) => { setFeet(e.target.value) }}>
-                                {[...Array(8)].map((ele, index) => {
-                                    return <option value={index + 1}>{index + 1}</option>
-                                })}
-                            </select>
-                        </label>
-                        <label>inch
-                            <select value={inch} onChange={(e) => { setInch(e.target.value) }}>
-                                {[...Array(12)].map((ele, index) => {
-                                    return <option value={index}>{index}</option>
-                                })}
-                            </select>
-                        </label>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>Current Weight
-                        <label><input onChange={weightHandler} type='number' step='0.1' defaultValue={weight}></input></label>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>Body Fat %
-                        <label><input onChange={bodyfatHandler} type='number' step='0.1' defaultValue={bodyfat}></input></label>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>Body Mass Index
-                        <label>{parseFloat(((weight) / ((parseInt(feet * 12) + parseInt(inch)) * (parseInt(feet * 12) + parseInt(inch)))) * 703).toFixed(2)}</label>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>Basal Metabolic Rate
-                        <label>{Math.round(basal_metabolic_rate(gender))}{" kcal"}</label>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>Activity Level
-                        <label>{Math.round(activityCalories)} {" kcal"}
-                        </label>
-                        <label>
-                            <select value={activity} onChange={(e) => {
-                                setActivity(e.target.value)
-                                setActivityCalories(activity_calories(e.target.value))
-                            }}>
-                                {["None", "sedentary", "lightly_active", "moderately_active", "very_active"].map((ele, index) => {
-                                    return <option value={ele}>{ele}</option>
-                                })}
-                            </select>
-                        </label>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>Total Energy Burned without exercise
-                        <label>{Math.round(bmr + activityCalories)}{" kcal"}</label>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>Weight Goal
-                        <label><input onChange={weightGoalHandler} type='number' step='0.1' defaultValue={weightGoal}></input></label>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>
-                        <label>
-                            Weight Goal Rate:
-                            <input
-                                type="range"
-                                min="-2"
-                                max="2"
-                                step='0.25'
-                                value={weightGoalRate}
-                                required
-                                onChange={weightGoalRateChange}
-                            />
-                            {weightGoalRate}lbs / week
-                        </label>
-                        {weightGoalCalories}{' kcal daily'}
-                    </div>
+        <Container>
+            <div className='profile-container-background'>
+                <div className='profile-container'>
                     <div style={{ display: "flex", justifyContent: 'center' }}>
-                        <Plot
-                            data={data}
-                            layout={layout}
-                        />
+                        <button className="" type="submit" onClick={resetProfileHandler}>Reset profile</button>
                     </div>
-                    <div style={{ display: "flex", justifyContent: 'space-around' }}>
-                        <label>
-                            Protein Ratio:
-                            <input type="number" min='0' max='100' value={protein} onChange={handleProteinChange} />
-                            %
-                        </label>
-                        <label>
-                            Carb Ratio:
-                            <input type="number" min='0' max='100' value={carbs} onChange={handleCarbsChange} />
-                            %
-                        </label>
-                        <label>
-                            Fat Ratio:
-                            <input type="number" min='0' max='100' value={fat} onChange={handleFatChange} />
-                            %
-                        </label>
+                    <form>
+                        <div onChange={genderHandler} style={{ display: "flex", justifyContent: 'space-between' }}>Sex
+                            <label><input type='radio' name='sex' value='male' checked={gender === 'male'}></input>Male</label>
+                            <label><input type='radio' name='sex' value='female' checked={gender === 'female'}></input>Female</label>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-between' }}>Birthday
+                            <label><input onChange={birthdayHandler} type='date' defaultValue={birthday}></input></label>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-between' }}>Age
+                            <label>{age}{' years old'}</label>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-between' }}>{"Height "}
+                            <label>feet
+                                <select value={feet} onChange={(e) => { setFeet(e.target.value) }}>
+                                    {[...Array(8)].map((ele, index) => {
+                                        return <option value={index + 1}>{index + 1}</option>
+                                    })}
+                                </select>
+                            </label>
+                            <label>inch
+                                <select value={inch} onChange={(e) => { setInch(e.target.value) }}>
+                                    {[...Array(12)].map((ele, index) => {
+                                        return <option value={index}>{index}</option>
+                                    })}
+                                </select>
+                            </label>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-between' }}>Current Weight
+                            <label><input onChange={weightHandler} type='number' step='0.1' defaultValue={weight}></input></label>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-between' }}>Body Fat %
+                            <label><input onChange={bodyfatHandler} type='number' step='0.1' defaultValue={bodyfat}></input></label>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-between' }}>Body Mass Index
+                            <label>{parseFloat(((weight) / ((parseInt(feet * 12) + parseInt(inch)) * (parseInt(feet * 12) + parseInt(inch)))) * 703).toFixed(2)}</label>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-between' }}>Basal Metabolic Rate
+                            <label>{Math.round(basal_metabolic_rate(gender))}{" kcal"}</label>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-between' }}>Activity Level
+                            <label>{Math.round(activityCalories)} {" kcal"}
+                            </label>
+                            <label>
+                                <select value={activity} onChange={(e) => {
+                                    setActivity(e.target.value)
+                                    setActivityCalories(activity_calories(e.target.value))
+                                }}>
+                                    {["None", "sedentary", "lightly_active", "moderately_active", "very_active"].map((ele, index) => {
+                                        return <option value={ele}>{ele}</option>
+                                    })}
+                                </select>
+                            </label>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-between' }}>Total Energy Burned without exercise
+                            <label>{Math.round(bmr + activityCalories)}{" kcal"}</label>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-between' }}>Weight Goal
+                            <label><input onChange={weightGoalHandler} type='number' step='0.1' defaultValue={weightGoal}></input></label>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-between' }}>
+                            <label>
+                                Weight Goal Rate:
+                                <input
+                                    type="range"
+                                    min="-2"
+                                    max="2"
+                                    step='0.25'
+                                    value={weightGoalRate}
+                                    required
+                                    onChange={weightGoalRateChange}
+                                />
+                                {weightGoalRate}lbs / week
+                            </label>
+                            {weightGoalCalories}{' kcal daily'}
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'center' }}>
+                            <Plot
+                                data={data}
+                                layout={layout}
+                            />
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-around' }}>
+                            <label>
+                                Protein Ratio:
+                                <input type="number" min='0' max='100' value={protein} onChange={handleProteinChange} />
+                                %
+                            </label>
+                            <label>
+                                Carb Ratio:
+                                <input type="number" min='0' max='100' value={carbs} onChange={handleCarbsChange} />
+                                %
+                            </label>
+                            <label>
+                                Fat Ratio:
+                                <input type="number" min='0' max='100' value={fat} onChange={handleFatChange} />
+                                %
+                            </label>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'center', alignItems: 'center' }}>
+                            <Plot
+                                data={[data2]}
+                                layout={layout2}
+                            // style={{ width: '100%', height: '400px' }}
+                            />
+                        </div>
+                        <div style={{ display: "flex", justifyContent: 'space-between' }}>Daily calorie goal without exercise
+                            <label>{Math.round(bmr + activityCalories + weightGoalCalories)}{" kcal"}</label>
+                        </div>
+                    </form>
+                    <div style={{ display: "flex", justifyContent: 'center' }}>
+                        {hideSubmitEdit && <button className="" type="submit" onClick={entrySubmit}>Save profile edit</button>}
+                        {hideSubmitNew && <button className="" type="submit" onClick={newEntrySubmit}>Submit new profile</button>}
                     </div>
-                    <div style={{ display: "flex", justifyContent: 'center', alignItems: 'center' }}>
-                        <Plot
-                            data={[data2]}
-                            layout={layout2}
-                        // style={{ width: '100%', height: '400px' }}
-                        />
-                    </div>
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>Daily calorie goal without exercise
-                        <label>{Math.round(bmr + activityCalories + weightGoalCalories)}{" kcal"}</label>
-                    </div>
-                </form>
-                <div style={{ display: "flex", justifyContent: 'center' }}>
-                    {hideSubmitEdit && <button className="" type="submit" onClick={entrySubmit}>Save profile edit</button>}
-                    {hideSubmitNew && <button className="" type="submit" onClick={newEntrySubmit}>Submit new profile</button>}
                 </div>
             </div>
-        </div>
+        </Container>
     );
 };
 

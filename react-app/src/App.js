@@ -12,6 +12,8 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UserProfile from "./components/profile/profile";
 import ExerciseDiary from "./components/Exercise/ExerciseDiary/exerciseDiary";
 import Footer from "./components/Footer/footer";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import HomePage from "./components/HomePage";
 
 
 function App() {
@@ -27,13 +29,16 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/" >
-            <Redirect to='/food/search' />
+            <HomePage/>
+            <Footer/>
           </Route>
           <Route path="/login" >
             <LoginFormPage />
+            <Footer/>
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+            <Footer/>
           </Route>
           <Route path="/food/search">
             <FoodSearchBar />
