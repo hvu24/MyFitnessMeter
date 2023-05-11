@@ -1,0 +1,14 @@
+.background {
+    background-image: url('./Black and White Sports Fitness Animated Presentation.gif');
+    /* margin-top: 10px; */
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    height: 95vh;
+    margin-bottom: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 1px 1px black;
+  }
