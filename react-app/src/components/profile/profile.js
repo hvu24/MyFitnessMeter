@@ -217,7 +217,7 @@ const UserProfile = () => {
     }
     const birthdayHandler = (e) => {
         setBirthday(e.target.value)
-        setAge(date.getFullYear() - e.target.value.slice(0, 4))
+        setAge(date.getFullYear() - e.target.value.slice(0, 4)- (((date.getMonth()), date.getDate()) < (e.target.value.slice(5, 7), e.target.value.slice(8, 10))))
     }
     const bodyfatHandler = (e) => {
         setBodyfat(e.target.value)
