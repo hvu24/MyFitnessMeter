@@ -31,7 +31,7 @@ class Profile(db.Model):
 
     @hybrid_property
     def age(self):
-        return date.today().year - self.birthday.year
+        return date.today().year - self.birthday.year - ((date.today().month, date.today().day) < (self.birthday.month, self.birthday.day))
 
     @hybrid_property
     def basal_metabolic_rate(self):
