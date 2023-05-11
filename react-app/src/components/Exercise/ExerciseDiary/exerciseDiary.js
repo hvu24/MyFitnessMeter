@@ -146,7 +146,7 @@ const ExerciseDiary = () => {
                             required
                             onChange={(e) => setExerciseName(e.target.value)}
                         />
-                    </label>
+                    </label>{' '}
                     <label className=''>Amount:
                         <input
                             type="number"
@@ -154,7 +154,7 @@ const ExerciseDiary = () => {
                             required
                             onChange={(e) => setExerciseAmount(e.target.value)}
                         />
-                    </label>
+                    </label>{' '}
                     <label className=''>MET:
                         <input
                             type="number"

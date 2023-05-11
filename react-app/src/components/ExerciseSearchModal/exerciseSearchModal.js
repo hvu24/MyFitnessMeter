@@ -110,7 +110,7 @@ function ExerciseSearchModal({ date, onModalSubmit }) {
                                                 setMets(exerciseNameMetObj[searchTerm])
                                             }}
                                         />
-                                        <button type="submit">
+                                        <button className='search-entry-button' type="submit">
                                             <i class="fa-solid fa-dumbbell"></i>
                                         </button>
                                     </label>

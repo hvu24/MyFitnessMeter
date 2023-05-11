@@ -1,14 +1,57 @@
 .background {
-    background-image: url('./Black and White Sports Fitness Animated Presentation.gif');
-    /* margin-top: 10px; */
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    height: 95vh;
-    margin-bottom: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-shadow: 1px 1px black;
+  background-image: url('./Black and White Sports Fitness Animated Presentation.gif');
+  /* margin-top: 10px; */
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  height: 80vh;
+  margin-bottom: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+.home-page-background-img {
+  /* background-image: url('./Black\ and\ Blue\ Simple\ Woman\ Barbell\ Workout\ Background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: repeat-y;
+  height: 1600px;
+  width: 100%; */
+  background-image: url('./womaneating.png');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+@media (min-width: 1920px) and (max-width: 1921px) {
+  .home-page-container {
+    margin-left: 450px;
   }
+}
+
+
+@keyframes rise {
+  from {
+    background-position: center top;
+  }
+  to {
+    background-position: center 50%;
+  }
+}
+
+.home-page-background-img {
+  animation-name: rise;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.home-page-background {
+  background-image: url('background.png');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}

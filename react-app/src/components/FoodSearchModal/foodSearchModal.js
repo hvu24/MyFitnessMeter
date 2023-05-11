@@ -368,7 +368,7 @@ function FoodSearchModal({ date, onModalSubmit }) {
                                 />
                             </label>
                         </div>
-                        <div><button className="" type="submit">Submit food entry</button></div>
+                        <div><button className="search-bar-button" type="submit"><i class="fa-solid fa-utensils"></i></button></div>
                     </form>}
                 </div>
             </div>
