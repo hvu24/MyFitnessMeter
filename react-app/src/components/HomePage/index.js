@@ -1,14 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Carousel from 'react-bootstrap/Carousel';
 import './HomePage.css';
+import image1 from './eating.png'
+import image2 from './ready.png'
+import image3 from './track.png'
+
+const images = [image1, image2, image3];
 
 function HomePage() {
+
+
     return (
         <div className='home-page-background'>
-            <div className='home-page-background-img'>
-                {/* <img className='background-image' src="./Black\ and\ Blue\ Simple\ Woman\ Barbell\ Workout\ Background.png" alt="Image"></img> */}
+            {/* <div className='home-page-background-img'> */}
+            <div className="image-container">
+                {images.map((image, index) => (
+                    <img
+                        key={index}
+                        src={image}
+                        alt={`Image ${index + 1}`}
+                        className="image"
+                        style={{ animationDelay: `${index}s` }}
+                    />
+                ))}
                 <Container className='home-page-container' style={{}}>
                     <Carousel style={{ zIndex: '0', position: 'relative' }}>
                         <Carousel.Item>
