@@ -217,7 +217,7 @@ const UserProfile = () => {
     }
     const birthdayHandler = (e) => {
         setBirthday(e.target.value)
-        setAge(date.getFullYear() - e.target.value.slice(0, 4)- (((date.getMonth()), date.getDate()) < (e.target.value.slice(5, 7), e.target.value.slice(8, 10))))
+        setAge(date.getFullYear() - e.target.value.slice(0, 4) - (((date.getMonth()), date.getDate()) < (e.target.value.slice(5, 7), e.target.value.slice(8, 10))))
     }
     const bodyfatHandler = (e) => {
         setBodyfat(e.target.value)
@@ -367,11 +367,23 @@ const UserProfile = () => {
         else return 0
     }
 
+    const titleCaseAndRemoveUnderscores = (str) => {
+        const words = str.split("_");
+
+        const titleCasedWords = words.map(word => {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        });
+
+        const titleCasedStr = titleCasedWords.join(" ");
+
+        return titleCasedStr;
+    }
 
 
     return (
-        <Container>
-            <div className='profile-container-background'>
+
+        <div className='profile-container-background'>
+            <Container>
                 <div className='profile-container'>
                     <div style={{ display: "flex", justifyContent: 'center' }}>
                         <button className="" type="submit" onClick={resetProfileHandler}>Reset profile</button>
@@ -424,7 +436,7 @@ const UserProfile = () => {
                                     setActivityCalories(activity_calories(e.target.value))
                                 }}>
                                     {["None", "sedentary", "lightly_active", "moderately_active", "very_active"].map((ele, index) => {
-                                        return <option value={ele}>{ele}</option>
+                                        return <option value={ele}>{titleCaseAndRemoveUnderscores(ele)}</option>
                                     })}
                                 </select>
                             </label>
@@ -490,8 +502,8 @@ const UserProfile = () => {
                         {hideSubmitNew && <button className="" type="submit" onClick={newEntrySubmit}>Submit new profile</button>}
                     </div>
                 </div>
-            </div>
-        </Container>
+            </Container>
+        </div>
     );
 };
 
