@@ -35,7 +35,7 @@ function Navigation({ isLoaded }) {
 							</NavDropdown.Item>
 						</NavDropdown> */}
 						{isLoaded && (
-							<ProfileButton user={sessionUser} />
+							<Nav.Link><ProfileButton user={sessionUser} /></Nav.Link>
 						)}
 					</Nav>
 				</Navbar.Collapse>

@@ -6,16 +6,21 @@ import './HomePage.css';
 import image1 from './eating.png'
 import image2 from './ready.png'
 import image3 from './track.png'
+// import { ReactComponent as MyButton } from './arrow.svg'
+import { useHistory } from "react-router-dom";
 
 const images = [image1, image2, image3];
 
 function HomePage() {
 
+    let history = useHistory()
 
     return (
         <div className='home-page-background'>
             {/* <div className='home-page-background-img'> */}
+            <button className="button" onClick={() => history.push("/food/search")}>Try it out <i class="fa-solid fa-angles-right"></i></button>
             <div className="image-container">
+
                 {images.map((image, index) => (
                     <img
                         key={index}
@@ -27,6 +32,13 @@ function HomePage() {
                 ))}
                 <Container className='home-page-container' style={{}}>
                     <Carousel style={{ zIndex: '0', position: 'relative' }}>
+                    <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src="https://wallpaperaccess.com/full/3278152.jpg"
+                                alt="Third slide"
+                            />
+                        </Carousel.Item>
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
@@ -45,13 +57,6 @@ function HomePage() {
                             <img
                                 className="d-block w-100"
                                 src="https://wallpaperaccess.com/full/749812.jpg"
-                                alt="Third slide"
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src="https://wallpaperaccess.com/full/3278152.jpg"
                                 alt="Third slide"
                             />
                         </Carousel.Item>
