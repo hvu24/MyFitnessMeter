@@ -99,6 +99,7 @@ const ExerciseDiary = () => {
     const diaryDeleteHandler = () => {
         dispatch(clearExerciseDiary(payload))
         setEntries([])
+        setCalories(0)
     }
 
     const entryEditSubmit = () => {
