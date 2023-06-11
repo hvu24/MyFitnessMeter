@@ -217,8 +217,28 @@ const UserProfile = () => {
     }
     const birthdayHandler = (e) => {
         setBirthday(e.target.value)
-        setAge(date.getFullYear() - e.target.value.slice(0, 4) - (((date.getMonth()), date.getDate()) < (e.target.value.slice(5, 7), e.target.value.slice(8, 10))))
+
+        const birthdayYear = e.target.value.slice(0, 4)
+        const birthdayMonth = e.target.value.slice(5, 7)
+        const birthdayDay = e.target.value.slice(8, 10)
+        const currentYear = date.getFullYear()
+        const currentMonth = date.getMonth() + 1
+        const currentDay = date.getDate()
+
+        let age = currentYear - birthdayYear;
+
+        // Check if the birth month and day have not occurred yet this year
+        if (
+            currentMonth < birthdayMonth ||
+            (currentMonth == birthdayMonth && // using == instead of === because birthday month has a leading 0 ex. 06 vs 6
+                currentDay < birthdayDay)
+        ) {
+            age--;
+        }
+
+        setAge(age)
     }
+
     const bodyfatHandler = (e) => {
         setBodyfat(e.target.value)
     }
