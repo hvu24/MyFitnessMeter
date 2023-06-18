@@ -48,7 +48,10 @@ const FoodSearchBar = () => {
         }
         dispatch(getFoodNutrition(payload))
             .then(async (res) => {
-                setNutrition(res.foods[0])
+                setNutrition(res?.foods[0])
+                // if(!res?.foods[0]){
+                //     console.log('yo')
+                // }
             })
     }
 

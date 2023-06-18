@@ -50,7 +50,7 @@ function FoodSearchModal({ date, onModalSubmit }) {
         }
         dispatch(getFoodNutrition(payload))
             .then(async (res) => {
-                setNutrition(res.foods[0])
+                setNutrition(res?.foods[0])
             })
     }
 
