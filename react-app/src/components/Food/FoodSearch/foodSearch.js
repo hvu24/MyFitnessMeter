@@ -340,7 +340,7 @@ const FoodSearchBar = () => {
                         {/* <h5>{date.toLocaleString()}</h5> */}
                     </form>
                 </div>
-                <div style={{ display: "flex", justifyContent: 'space-around', marginTop: '0px' }}>
+                <div style={{ display: "flex", justifyContent: 'space-around', marginTop: '20px' }}>
                     <div>
                         {foods && foods.common && <h5 style={{ display: "flex", justifyContent: 'center' }}>Common Foods</h5>}
                         <div className='common-list'>
