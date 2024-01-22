@@ -1,269 +1,56 @@
 export const showNutrientDetail = (id, carbGoal, fatGoal, proteinGoal) => {
-    let detail = {
-        'name': '',
-        'unit': ''
-    }
-    switch (id) {
-        // case 208:
-        //     detail.name = 'Energy'
-        //     detail.unit = 'kcal'
-        //     break
-        case 221:
-            detail.name = 'Alcohol'
-            detail.unit = 'g'
-            detail.target = 0
-            break
-        case 262:
-            detail.name = 'Caffeine'
-            detail.unit = 'mg'
-            detail.target = 0
-            break
-        case 255:
-            detail.name = 'Water'
-            detail.unit = 'g'
-            detail.target = 3700
-            break
-        case 291:
-            detail.name = 'Fiber'
-            detail.unit = 'g'
-            detail.target = 38
-            break
-        case 209:
-            detail.name = 'Starch'
-            detail.unit = 'g'
-            detail.target = 0
-            break
-        case 269:
-            detail.name = 'Sugars'
-            detail.unit = 'g'
-            detail.target = 0
-            break
-        case 205:
-            detail.name = 'Net carbs'
-            detail.unit = 'g'
-            detail.target = carbGoal
-            break
-        case 204:
-            detail.name = 'Total fat'
-            detail.unit = 'g'
-            detail.target = fatGoal
-            break
-        case 645:
-            detail.name = 'Monounsaturated fat'
-            detail.unit = 'g'
-            detail.target = 0
-            break
-        case 646:
-            detail.name = 'Polyunsaturated fat'
-            detail.unit = 'g'
-            detail.target = 0
-            break
-        case 619:
-            detail.name = 'Alphalinolenic acid'
-            detail.unit = 'g'
-            detail.target = 2
-            break
-        case 629:
-            detail.name = 'Eicosapentaenoic acid'
-            detail.unit = 'g'
-            detail.target = 0.25
-            break
-        case 621:
-            detail.name = 'Docosahexaenoic acid'
-            detail.unit = 'g'
-            detail.target = 0.25
-            break
-        case 618:
-            detail.name = 'Linoleic acid'
-            detail.unit = 'g'
-            detail.target = 10
-            break
-        case 620:
-            detail.name = 'Arachidonic acid'
-            detail.unit = 'g'
-            detail.target = 7
-            break
-        case 606:
-            detail.name = 'Saturated fat'
-            detail.unit = 'g'
-            detail.target = 0
-            break
-        case 605:
-            detail.name = 'Trans fat'
-            detail.unit = 'g'
-            detail.target = 0
-            break
-        case 601:
-            detail.name = 'Cholesterol'
-            detail.unit = 'mg'
-            detail.target = 0
-            break
-        case 203:
-            detail.name = 'Total protein'
-            detail.unit = 'g'
-            detail.target = proteinGoal
-            break
-        case 512:
-            detail.name = 'Histidine'
-            detail.unit = 'g'
-            detail.target = 1.1
-            break
-        case 503:
-            detail.name = 'Isoleucine'
-            detail.unit = 'g'
-            detail.target = 1.5
-            break
-        case 504:
-            detail.name = 'Leucine'
-            detail.unit = 'g'
-            detail.target = 3.3
-            break
-        case 505:
-            detail.name = 'Lysine'
-            detail.unit = 'g'
-            detail.target = 3
-            break
-        case 506:
-            detail.name = 'Methionine'
-            detail.unit = 'g'
-            detail.target = 0.8
-            break
-        case 508:
-            detail.name = 'Phenylalanine'
-            detail.unit = 'g'
-            detail.target = 1.3
-            break
-        case 502:
-            detail.name = 'Threonine'
-            detail.unit = 'g'
-            detail.target = 1.6
-            break
-        case 501:
-            detail.name = 'Tryptophan'
-            detail.unit = 'g'
-            detail.target = 0.4
-            break
-        case 510:
-            detail.name = 'Valine'
-            detail.unit = 'g'
-            detail.target = 1.9
-            break
-        case 404:
-            detail.name = 'Vitamin b1'
-            detail.unit = 'mg'
-            detail.target = 1.2
-            break
-        case 405:
-            detail.name = 'Vitamin b2'
-            detail.unit = 'mg'
-            detail.target = 1.3
-            break
-        case 406:
-            detail.name = 'Vitamin b3'
-            detail.unit = 'mg'
-            detail.target = 16
-            break
-        case 410:
-            detail.name = 'Vitamin b5'
-            detail.unit = 'mg'
-            detail.target = 5
-            break
-        case 415:
-            detail.name = 'Vitamin b6'
-            detail.unit = 'mg'
-            detail.target = 1.3
-            break
-        case 418:
-            detail.name = 'Vitamin b12'
-            detail.unit = 'Aug'
-            detail.target = 2.4
-            break
-        case 417:
-            detail.name = 'Folate'
-            detail.unit = 'Aug'
-            detail.target = 400
-            break
-        case 320:
-            detail.name = 'Vitamin a'
-            detail.unit = 'Aug'
-            detail.target = 900
-            break
-        case 401:
-            detail.name = 'Vitamin c'
-            detail.unit = 'mg'
-            detail.target = 90
-            break
-        case 324:
-            detail.name = 'Vitamin d'
-            detail.unit = 'iu'
-            detail.target = 600
-            break
-        case 323:
-            detail.name = 'Vitamin e'
-            detail.unit = 'mg'
-            detail.target = 15
-            break
-        case 430:
-            detail.name = 'Vitamin k'
-            detail.unit = 'Aug'
-            detail.target = 120
-            break
-        case 301:
-            detail.name = 'Calcium'
-            detail.unit = 'mg'
-            detail.target = 1000
-            break
-        case 312:
-            detail.name = 'Copper'
-            detail.unit = 'mg'
-            detail.target = 0.9
-            break
-        case 303:
-            detail.name = 'Iron'
-            detail.unit = 'mg'
-            detail.target = 8
-            break
-        case 304:
-            detail.name = 'Magnesium'
-            detail.unit = 'mg'
-            detail.target = 400
-            break
-        case 315:
-            detail.name = 'Manganese'
-            detail.unit = 'mg'
-            detail.target = 2.3
-            break
-        case 305:
-            detail.name = 'Phosphorus'
-            detail.unit = 'mg'
-            detail.target = 700
-            break
-        case 306:
-            detail.name = 'Potassium'
-            detail.unit = 'mg'
-            detail.target = 3400
-            break
-        case 317:
-            detail.name = 'Selenium'
-            detail.unit = 'Aug'
-            detail.target = 55
-            break
-        case 307:
-            detail.name = 'Sodium'
-            detail.unit = 'mg'
-            detail.target = 1500
-            break
-        case 309:
-            detail.name = 'Zinc'
-            detail.unit = 'mg'
-            detail.target = 11
-            break
-        default:
-            detail.name = 'none'
-            detail.unit = 'none'
-            detail.target = 0
-            break
-    }
+    const nutrientDetails = {
+        221: { name: 'Alcohol', unit: 'g', target: 0 },
+        262: { name: 'Caffeine', unit: 'mg', target: 0 },
+        255: { name: 'Water', unit: 'g', target: 3700 },
+        291: { name: 'Fiber', unit: 'g', target: 38 },
+        209: { name: 'Starch', unit: 'g', target: 0 },
+        269: { name: 'Sugars', unit: 'g', target: 0 },
+        205: { name: 'Net carbs', unit: 'g', target: carbGoal },
+        204: { name: 'Total fat', unit: 'g', target: fatGoal },
+        645: { name: 'Monounsaturated fat', unit: 'g', target: 0 },
+        646: { name: 'Polyunsaturated fat', unit: 'g', target: 0 },
+        619: { name: 'Alphalinolenic acid', unit: 'g', target: 2 },
+        629: { name: 'Eicosapentaenoic acid', unit: 'g', target: 0.25 },
+        621: { name: 'Docosahexaenoic acid', unit: 'g', target: 0.25 },
+        618: { name: 'Linoleic acid', unit: 'g', target: 10 },
+        620: { name: 'Arachidonic acid', unit: 'g', target: 7 },
+        606: { name: 'Saturated fat', unit: 'g', target: 0 },
+        605: { name: 'Trans fat', unit: 'g', target: 0 },
+        601: { name: 'Cholesterol', unit: 'mg', target: 0 },
+        203: { name: 'Total protein', unit: 'g', target: proteinGoal },
+        512: { name: 'Histidine', unit: 'g', target: 1.1 },
+        503: { name: 'Isoleucine', unit: 'g', target: 1.5 },
+        504: { name: 'Leucine', unit: 'g', target: 3.3 },
+        505: { name: 'Lysine', unit: 'g', target: 3 },
+        506: { name: 'Methionine', unit: 'g', target: 0.8 },
+        508: { name: 'Phenylalanine', unit: 'g', target: 1.3 },
+        502: { name: 'Threonine', unit: 'g', target: 1.6 },
+        501: { name: 'Tryptophan', unit: 'g', target: 0.4 },
+        510: { name: 'Valine', unit: 'g', target: 1.9 },
+        404: { name: 'Vitamin b1', unit: 'mg', target: 1.2 },
+        405: { name: 'Vitamin b2', unit: 'mg', target: 1.3 },
+        406: { name: 'Vitamin b3', unit: 'mg', target: 16 },
+        410: { name: 'Vitamin b5', unit: 'mg', target: 5 },
+        415: { name: 'Vitamin b6', unit: 'mg', target: 1.3 },
+        418: { name: 'Vitamin b12', unit: 'Aug', target: 2.4 },
+        417: { name: 'Folate', unit: 'Aug', target: 400 },
+        320: { name: 'Vitamin a', unit: 'Aug', target: 900 },
+        401: { name: 'Vitamin c', unit: 'mg', target: 90 },
+        324: { name: 'Vitamin d', unit: 'iu', target: 600 },
+        323: { name: 'Vitamin e', unit: 'mg', target: 15 },
+        430: { name: 'Vitamin k', unit: 'Aug', target: 120 },
+        301: { name: 'Calcium', unit: 'mg', target: 1000 },
+        312: { name: 'Copper', unit: 'mg', target: 0.9 },
+        303: { name: 'Iron', unit: 'mg', target: 8 },
+        304: { name: 'Magnesium', unit: 'mg', target: 400 },
+        315: { name: 'Manganese', unit: 'mg', target: 2.3 },
+        305: { name: 'Phosphorus', unit: 'mg', target: 700 },
+        306: { name: 'Potassium', unit: 'mg', target: 3400 },
+        317: { name: 'Selenium', unit: 'Aug', target: 55 },
+        307: { name: 'Sodium', unit: 'mg', target: 1500 },
+        309: { name: 'Zinc', unit: 'mg', target: 11 },
+    };
 
-    return detail
-}
+    return nutrientDetails[id] || { name: 'none', unit: 'none', target: 0 };
+};
