@@ -294,35 +294,6 @@ const FoodDiary = () => {
                         modalComponent={<FoodSearchModal onModalSubmit={handleModalSubmit} date={date} />}
                     />
                 </div>
-                {/* <form method='POST' onSubmit={entrySubmit}>
-                <label className=''>Food Name:
-                    <input
-                        type="text"
-                        placeholder="Food name..."
-                        required
-                        onChange={(e) => setFoodName(e.target.value)}
-                    />
-                </label>
-                <label className=''>Amount:
-                    <input
-                        type="number"
-                        placeholder="Amount in grams..."
-                        required
-                        step='0.01'
-                        onChange={(e) => setFoodAmount(e.target.value)}
-                    />
-                </label>
-                <label className=''>Calories per gram:
-                    <input
-                        type="number"
-                        placeholder="Amount in kcal..."
-                        required
-                        step='0.01'
-                        onChange={(e) => setCalorieAmount(e.target.value)}
-                    />
-                </label>
-                <button className="" type="submit">Submit food entry</button>
-            </form> */}
                 <h5>Food Entries</h5>
                 <div className='food-diary-list'>
                     {entries && entries.length > 0 ? entries.map((entry, index) => {
@@ -374,17 +345,14 @@ const FoodDiary = () => {
                     <div><Plot
                         data={data2}
                         layout={layout2}
-                    // style={{ width: '100%', height: '100%' }}
                     /></div>
                     <div><Plot
                         data={data3}
                         layout={layout3}
-                    // style={{ width: '100%', height: '100%' }}
                     /></div>
                     <div><Plot
                         data={data4}
                         layout={layout4}
-                    // style={{ width: '100%', height: '100%' }}
                     /></div>
                 </div>
             </div>
