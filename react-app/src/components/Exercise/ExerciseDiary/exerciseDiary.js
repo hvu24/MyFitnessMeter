@@ -140,7 +140,7 @@ const ExerciseDiary = () => {
                 </div>
                 <h5></h5>
                 <form method='POST' onSubmit={entrySubmit}>
-                    <label className=''>Exercise Name:
+                    <label className='form-label'>Exercise Name:
                         <input
                             type="text"
                             placeholder="Exercise name..."
@@ -148,7 +148,7 @@ const ExerciseDiary = () => {
                             onChange={(e) => setExerciseName(e.target.value)}
                         />
                     </label>{' '}
-                    <label className=''>Amount:
+                    <label className='form-label'>Amount:
                         <input
                             type="number"
                             placeholder="Amount in minutes..."
@@ -156,7 +156,7 @@ const ExerciseDiary = () => {
                             onChange={(e) => setExerciseAmount(e.target.value)}
                         />
                     </label>{' '}
-                    <label className=''>MET:
+                    <label className='form-label'>MET:
                         <input
                             type="number"
                             placeholder="Set MET score..."
