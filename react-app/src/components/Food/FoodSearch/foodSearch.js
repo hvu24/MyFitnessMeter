@@ -7,6 +7,7 @@ import { getFoodNutrition } from '../../../store/foodNutrition';
 import Plot from 'react-plotly.js';
 import { getProfile } from '../../../store/profile';
 import { showNutrientDetail } from '../../../utilities/showNutritionDetail';
+import { capitalizeWords } from '../../../utilities/capitalizeWords';
 
 const FoodSearchBar = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -70,7 +71,7 @@ const FoodSearchBar = () => {
                         {foods && foods.common && <h5 style={{ display: "flex", justifyContent: 'center' }}>Common Foods</h5>}
                         <div className='common-list'>
                             {foods && foods.common && foods?.common.map((food, index) => (
-                                <div className='entry' key={index} onClick={() => handleSearch(food.food_name)}>{food.food_name}</div>
+                                <div className='entry' key={index} onClick={() => handleSearch(food.food_name)}>{capitalizeWords(food.food_name)}</div>
                             ))}
                         </div>
                     </div>

@@ -55,7 +55,8 @@ function LoginFormModal() {
         </label>
         <button type="submit">Log In</button>
       </form>
-      <p>Try it out! <button onClick={handeClick}>Demo Login</button></p>
+      <label>Try it out! Click Demo Login to populate fields.<button onClick={handeClick}>Demo Login</button></label>
+
     </div>
   );
 }

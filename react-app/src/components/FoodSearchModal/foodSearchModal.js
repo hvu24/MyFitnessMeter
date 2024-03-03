@@ -7,6 +7,7 @@ import { getFoodNutrition } from '../../store/foodNutrition';
 import "./foodSearchModal.css";
 import { createFoodDiary } from '../../store/foodDiary';
 import { showNutrientDetail } from '../../utilities/showNutritionDetail';
+import { capitalizeWords } from '../../utilities/capitalizeWords';
 
 
 function FoodSearchModal({ date, onModalSubmit }) {
@@ -101,7 +102,7 @@ function FoodSearchModal({ date, onModalSubmit }) {
                             {foods && foods.common && <h5 style={{ display: "flex", justifyContent: 'center' }}>Common foods</h5>}
                             <div className='common-list'>
                                 {foods && foods.common && foods?.common.map((food, index) => (
-                                    <div className='search-entry' key={index} onClick={() => handleSearch(food.food_name)}>{food.food_name}</div>
+                                    <div className='search-entry' key={index} onClick={() => handleSearch(food.food_name)}>{capitalizeWords(food.food_name)}</div>
                                 ))}
                             </div>
                         </div>
