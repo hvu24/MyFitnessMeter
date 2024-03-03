@@ -7,6 +7,7 @@ import { getFoodNutrition } from '../../../store/foodNutrition';
 import Plot from 'react-plotly.js';
 import { getProfile } from '../../../store/profile';
 import { showNutrientDetail } from '../../../utilities/showNutritionDetail';
+import { capitalizeWords } from '../../../utilities/capitalizeWords';
 
 const FoodSearchBar = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -52,15 +53,6 @@ const FoodSearchBar = () => {
             })
     }
 
-    const upperCaseNames = words => {
-        let wordsArray = words.split(' ')
-        let res = []
-        for(let i = 0; i < wordsArray.length; i++){
-            res.push(wordsArray[i][0].toUpperCase() + wordsArray[i].slice(1))
-        }
-        return res.join(' ')
-    }
-
     return (
         <div className='food-search-bar-container'>
             <div className='food-search-container'>
@@ -79,7 +71,7 @@ const FoodSearchBar = () => {
                         {foods && foods.common && <h5 style={{ display: "flex", justifyContent: 'center' }}>Common Foods</h5>}
                         <div className='common-list'>
                             {foods && foods.common && foods?.common.map((food, index) => (
-                                <div className='entry' key={index} onClick={() => handleSearch(food.food_name)}>{upperCaseNames(food.food_name)}</div>
+                                <div className='entry' key={index} onClick={() => handleSearch(food.food_name)}>{capitalizeWords(food.food_name)}</div>
                             ))}
                         </div>
                     </div>
