@@ -37,7 +37,7 @@
 }
 
 .link {
-  color: rgb(76, 0, 255)
+  color: blue
 }
 
 .nav-div {
@@ -53,4 +53,12 @@
 
 .link:hover {
   color: rgb(27, 247, 115);
+}
+
+.brand-link:hover {
+  color: rgb(27, 247, 115) !important;
+}
+
+.active-brand-link {
+  color: rgb(226, 73, 43) !important;
 }
