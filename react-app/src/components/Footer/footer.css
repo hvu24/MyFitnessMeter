@@ -4,7 +4,8 @@
   }
 
   .footer-link {
-    color: rgb(76, 0, 255)
+    color: rgb(76, 0, 255);
+    height: 30px;
   }
 
   .footer-link:hover {
