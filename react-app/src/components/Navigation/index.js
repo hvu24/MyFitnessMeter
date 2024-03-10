@@ -14,11 +14,11 @@ function Navigation({ isLoaded }) {
 	return (
 		<Navbar bg="secondary" expand="lg">
 			<Container>
-				<Navbar.Brand href="/" style={{ color: 'blue' }}>MyFitnessMeter</Navbar.Brand>
+				<Navbar.Brand as={NavLink} to="/" style={{ color: 'blue' }} className='brand-link'>MyFitnessMeter</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="me-auto">
-						<Nav.Link href="#home"><NavLink exact to="/" className='link' ><i class="fa-solid fa-house"> Home</i></NavLink></Nav.Link>
+						{/* <Nav.Link href="#home"><NavLink exact to="/" className='link' ><i class="fa-solid fa-house"> Home</i></NavLink></Nav.Link> */}
 						<Nav.Link href="#link"><NavLink exact to="/food/search" className='link' ><i class="fa-solid fa-magnifying-glass"> Food Search</i></NavLink></Nav.Link>
 						<Nav.Link href="#link"><NavLink exact to="/food/diary" className='link' ><i class="fa-solid fa-apple-whole"> Food Diary</i></NavLink></Nav.Link>
 						<Nav.Link href="#link"><NavLink exact to="/exercise/diary" className='link' ><i class="fa-solid fa-bicycle"> Exercise Diary</i></NavLink></Nav.Link>
