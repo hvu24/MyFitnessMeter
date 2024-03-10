@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -10,11 +10,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
+	let location = useLocation();
+	const isActive = location.pathname === '/';
 
 	return (
 		<Navbar bg="secondary" expand="lg">
 			<Container>
-				<Navbar.Brand as={NavLink} to="/" style={{ color: 'blue' }} className='brand-link'>MyFitnessMeter</Navbar.Brand>
+				<Navbar.Brand as={NavLink} to="/" style={{ color: 'blue' }} className={isActive ? 'active-brand-link' : 'brand-link'}>MyFitnessMeter</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="me-auto">
