@@ -14,9 +14,9 @@ function Navigation({ isLoaded }) {
 	const isActive = location.pathname === '/';
 
 	return (
-		<Navbar bg="secondary" expand="lg">
+		<Navbar bg="dark" expand="lg">
 			<Container>
-				<Navbar.Brand as={NavLink} to="/" style={{ color: 'blue' }} className={isActive ? 'active-brand-link' : 'brand-link'}>MyFitnessMeter</Navbar.Brand>
+				<Navbar.Brand as={NavLink} to="/" style={{ color: '#E6E6FA' }} className={isActive ? 'active-brand-link' : 'brand-link'}>MyFitnessMeter</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="me-auto">
