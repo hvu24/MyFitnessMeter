@@ -24,7 +24,6 @@
     box-sizing: border-box;
     text-align: center;
     background-color: rgb(0, 107, 214);
-    /* color: rgb(255, 255, 255); */
     border-radius: 10%;
     width: 60px;
     height: 51px;
@@ -41,15 +40,11 @@
 }
 
 .food-diary-search-container .common-list {
-    /* position: absolute; */
-    /* background-color: rgb(121, 220, 238); */
     width: 270px;
     padding: 10px;
 }
 
 .food-diary-search-container .branded-list{
-    /* position: absolute; */
-    /* background-color: rgb(84, 250, 173); */
     width: 270px;
     padding: 10px;
 }

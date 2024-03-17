@@ -75,32 +75,9 @@
   }
 }
 
-/* .home-page-background-img {
-  background-image: url('./womaneating.png');
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-} */
-
-/* @keyframes rise {
-  from {
-    background-position: center top;
-  }
-  to {
-    background-position: center 50%;
-  }
-}
-
-.home-page-background-img {
-  animation-name: rise;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-} */
-
 .home-page-background {
   background-image: url('background.png');
   background-size: cover;
-  /* background-position: center center; */
   background-attachment: fixed;
   z-index: -999;
 }

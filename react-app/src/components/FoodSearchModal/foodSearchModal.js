@@ -96,7 +96,6 @@ function FoodSearchModal({ date, onModalSubmit }) {
                             <i class="fa-solid fa-utensils"></i>
                         </button>
                     </div>
-                    {/* <h5>{date.toLocaleString()}</h5> */}
                     <div style={{ display: "flex", justifyContent: 'space-between' }}>
                         <div>
                             {foods && foods.common && <h5 style={{ display: "flex", justifyContent: 'center' }}>Common foods</h5>}
@@ -127,7 +126,6 @@ function FoodSearchModal({ date, onModalSubmit }) {
                         {nutrition && nutrition.full_nutrients && <div><b>Calories</b> : {nutrition.nf_calories }kcal</div>}
                         {nutrition && nutrition.full_nutrients && <div><b>Calories per gram</b> : {nutrition.nf_calories / nutrition.serving_weight_grams} kcal</div>}
                         {nutrition && nutrition.full_nutrients && nutrition?.full_nutrients.map((nutrient, index) => {
-                            // if (nutrient.attr_id === 208) return <div className='search-entry' key={index}>{showNutrientDetail(nutrient.attr_id).name} : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
                             if (showNutrientDetail(nutrient.attr_id).name !== 'none') return <div className='' key={index}><b>{showNutrientDetail(nutrient.attr_id).name}</b> : {nutrient.value} {showNutrientDetail(nutrient.attr_id).unit}</div>
                         })}
                     </div>

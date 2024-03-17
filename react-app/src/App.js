@@ -6,7 +6,6 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import FoodSearchBar from "./components/Food/FoodSearch/foodSearch";
-import ExerciseSearchBar from "./components/Exercise/ExerciseSearch/exerciseSearch";
 import FoodDiary from "./components/Food/FoodDiary/foodDiary";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UserProfile from "./components/profile/profile";
@@ -44,9 +43,6 @@ function App() {
             <FoodSearchBar />
             <Footer/>
           </Route>
-          {/* <Route path="/exercise/search">
-            <ExerciseSearchBar />
-          </Route> */}
           <Route path='/food/diary'>
             <ProtectedRoute>
               <FoodDiary />

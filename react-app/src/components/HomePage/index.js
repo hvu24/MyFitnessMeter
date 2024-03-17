@@ -6,7 +6,6 @@ import './HomePage.css';
 import image1 from './eating.png'
 import image2 from './ready.png'
 import image3 from './track.png'
-// import { ReactComponent as MyButton } from './arrow.svg'
 import { useHistory } from "react-router-dom";
 
 const images = [image1, image2, image3];
@@ -17,7 +16,6 @@ function HomePage() {
 
     return (
         <div className='home-page-background'>
-            {/* <div className='home-page-background-img'> */}
             <button className="button" onClick={() => history.push("/food/search")}>Try it out <i class="fa-solid fa-angles-right"></i></button>
             <div className="image-container">
 
