@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-// import "./SearchBar.css"
 import { getSearchExercises } from '../../../store/exerciseSearch';
 import { getExerciseDetails } from '../../../store/exerciseDetails';
 
@@ -27,7 +26,6 @@ const ExerciseSearchBar = () => {
     const handleInputChange = async (event) => {
         setSearchTerm(event.target.value);
         setRecommendations(getRecommendations(event.target.value));
-        // console.log('logging searchTerm from input change', searchTerm)
     };
 
     const getRecommendations = (searchTerm) => {
@@ -39,16 +37,10 @@ const ExerciseSearchBar = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        // const data = await dispatch(getSearchExercises(searchTerm))
-        // if (data) setExercises(data)
     }
 
     const handleSearch = async (exercise) => {
         setSearchTerm(exercise)
-        // const payload = {
-        //     "query": exercise
-        // }
-        // console.log(await dispatch(getExerciseDetails(payload)))
     }
 
 
@@ -73,12 +65,6 @@ const ExerciseSearchBar = () => {
                     <div>Exercise calories = (MET level of activity x 3.5 x Weight (lb) x 0.45359237 x minutes of activity) / 200</div>
                 </div>}
             </div>
-            {/* {exercises && exercises[0] && <h5>Exercises</h5>}
-            <div className='search-common-list'>
-                {exercises && exercises[0] && exercises?.map((exercise, index) => (
-                    <div className='search-entry' key={index} onClick={() => handleSearch(exercise.name)}>{exercise.name}</div>
-                ))}
-            </div> */}
         </form>
 
     );

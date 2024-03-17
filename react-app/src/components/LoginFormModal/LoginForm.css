@@ -15,12 +15,10 @@
 .modal-container form {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-around; */
     align-items: center;
 }
 
 .modal-container label {
-    /* display: block; */
     display: grid;
     margin-bottom: 10px;
 }
@@ -29,7 +27,6 @@
     width: 200px;
     padding: 10px;
     border-radius: 5px;
-    /* border: none; */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 

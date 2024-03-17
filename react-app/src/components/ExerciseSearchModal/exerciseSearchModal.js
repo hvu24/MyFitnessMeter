@@ -119,12 +119,6 @@ function ExerciseSearchModal({ date, onModalSubmit }) {
                             </div>}
                         </div>
                     </div>
-                    {/* {exercises && exercises[0] && <h5>Exercises</h5>}
-            <div className='search-common-list'>
-                {exercises && exercises[0] && exercises?.map((exercise, index) => (
-                    <div className='search-entry' key={index} onClick={() => handleSearch(exercise.name)}>{exercise.name}</div>
-                ))}
-            </div> */}
                 </form>
             </div>
         </div>

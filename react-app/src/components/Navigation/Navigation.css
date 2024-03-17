@@ -17,7 +17,6 @@
   margin-top: 0px;
   padding: 0px 8px;
   border-radius: 3px;
-  /* border: none; */
   background-color: #0077ff;
   color: #fff;
   font-size: 16px;
@@ -43,12 +42,10 @@
 .nav-div {
   display: flex;
   justify-content: space-around;
-  background-color: grey;
-  /* list-style: none; */
+  background-color: #2F4F4F;
   position: sticky;
   top: 0;
   z-index: 999;
-  /* width: 100%; */
 }
 
 .link:hover {
