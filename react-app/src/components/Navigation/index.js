@@ -14,7 +14,7 @@ function Navigation({ isLoaded }) {
 	const isActive = location.pathname === '/';
 
 	return (
-		<Navbar style={{fontFamily: 'sans-serif'}} bg="dark" expand="lg">
+		<Navbar style={{fontFamily: 'sans-serif', position: 'fixed', width: '100%', zIndex: '999'}} bg="dark" expand="lg">
 			<Container>
 				<Navbar.Brand as={NavLink} to="/" style={{ color: '#E6E6FA', fontSize: '36px'}} className={isActive ? 'active-brand-link' : 'brand-link'}>MyFitnessMeter</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />

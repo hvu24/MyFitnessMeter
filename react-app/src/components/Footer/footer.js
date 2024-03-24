@@ -3,17 +3,14 @@ import './footer.css';
 
 function Footer() {
     return (
-        <footer style={{ zIndex: '999', position: 'relative' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-around', backgroundColor: '#212529', zIndex: '999' }}>
-                <a href='https://www.linkedin.com/in/anthony-v-67a490214/' target='_blank' className='footer-link'>
-                    <i class="fa-brands fa-linkedin" style={{ fontSize: '24px' }}></i>
-                </a>
-                <a href='https://github.com/hvu24' target='_blank' className='footer-link'>
-                    <i class="fa-brands fa-github" style={{ fontSize: '24px' }}></i>
-                </a>
-            </div>
+        <footer>
+            <a href='https://www.linkedin.com/in/anthony-v-67a490214/' target='_blank' className='footer-link'>
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href='https://github.com/hvu24' target='_blank' className='footer-link'>
+                <i class="fa-brands fa-github"></i>
+            </a>
         </footer>
-
     );
 }
 
