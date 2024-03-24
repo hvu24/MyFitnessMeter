@@ -13,7 +13,7 @@
   z-index: 2;
 }
 
-.profile-menu button{
+.profile-menu button {
   margin-top: 0px;
   padding: 0px 8px;
   border-radius: 3px;
@@ -36,7 +36,14 @@
 }
 
 .link {
-  color: #E6E6FA
+  color: #E6E6FA;
+  text-decoration: none;
+}
+
+.link span {
+  font-family: sans-serif;
+  font-size: 24px;
+  /* color: #333; */
 }
 
 .nav-div {
