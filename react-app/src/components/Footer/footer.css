@@ -6,8 +6,10 @@
   .footer-link {
     color: #E6E6FA;
     height: 30px;
+    transition: transform 0.3s ease;
   }
 
   .footer-link:hover {
     color: rgb(27, 247, 115);
+    transform: scale(1.2) !important;
   }

@@ -38,12 +38,10 @@
 .link {
   color: #E6E6FA;
   text-decoration: none;
-}
-
-.link span {
+  display: inline-block;
+  transition: transform 0.3s ease;
   font-family: sans-serif;
   font-size: 24px;
-  /* color: #333; */
 }
 
 .nav-div {
@@ -57,6 +55,7 @@
 
 .link:hover {
   color: rgb(27, 247, 115) !important;
+  transform: scale(1.2) !important;
 }
 
 .brand-link:hover {
