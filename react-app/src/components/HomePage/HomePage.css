@@ -1,13 +1,16 @@
-@keyframes slide-in {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+.hero-section {
+  display: flex;
+  background-image: url('background.png');
+  background-size: cover;
+  height: auto;
+  width: auto;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  background-attachment: fixed;
+  z-index: -999;
 }
 
-.button {
+.try-button {
   transform: rotate(45deg);
   position: relative;
   width: 200px;
@@ -23,35 +26,46 @@
   z-index: 999;
   opacity: .8;
 }
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+  }
 
-.image-container {
-  position: center center;
-  overflow: hidden;
-  size: cover;
-  z-index: 0;
+  100% {
+    transform: translateX(0);
+  }
 }
 
-.image {
+.start-tracking-image {
   position: fixed;
-  width: 175vh;
-  height: 100%;
+  left: 0px;
+  bottom: -100px;
+  width: 100vw;
+  height: 100vh;
   object-fit: contain;
   opacity: 0;
   transition: opacity 1s;
   z-index: 0;
-}
-
-@keyframes pop {
-  0% { transform: scale(0); opacity: 0; }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.image {
   animation-name: pop;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .background {
@@ -69,15 +83,8 @@
 }
 
 
-@media (min-width: 1920px) and (max-width: 1921px) {
+/* @media (min-width: 1920px) and (max-width: 1921px) {
   .home-page-container {
     margin-left: 450px;
   }
-}
-
-.home-page-background {
-  background-image: url('background.png');
-  background-size: cover;
-  background-attachment: fixed;
-  z-index: -999;
-}
+} */
