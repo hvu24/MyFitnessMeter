@@ -15,22 +15,23 @@ function HomePage() {
     let history = useHistory()
 
     return (
-        <div className='home-page-background'>
-            <button className="button" onClick={() => history.push("/food/search")}>Try it out <i class="fa-solid fa-angles-right"></i></button>
-            <div className="image-container">
-
-                {images.map((image, index) => (
-                    <img
-                        key={index}
-                        src={image}
-                        alt={`Image ${index + 1}`}
-                        className="image"
-                        style={{ animationDelay: `${index}s` }}
-                    />
-                ))}
-                <Container className='home-page-container' style={{}}>
-                    <Carousel style={{ zIndex: '0', position: 'relative' }}>
-                    <Carousel.Item>
+        <section className='hero-section'>
+            <button className="try-button" onClick={() => history.push("/food/search")}>Try it out <i class="fa-solid fa-angles-right"></i></button>
+            <Container className='animation-container'>
+                <div>
+                    {images.map((image, index) => (
+                        <img
+                            key={index}
+                            src={image}
+                            alt={`Image ${index + 1}`}
+                            className="start-tracking-image"
+                            style={{ animationDelay: `${index}s` }}
+                        />
+                    ))}
+                </div>
+                <div className='motivation-panel'>
+                    <Carousel>
+                        <Carousel.Item>
                             <img
                                 className="d-block w-100"
                                 src="https://wallpaperaccess.com/full/3278152.jpg"
@@ -61,9 +62,9 @@ function HomePage() {
                     </Carousel>
                     <div className='background'>
                     </div>
-                </Container>
-            </div>
-        </div>
+                </div>
+            </Container>
+        </section >
     );
 }
 
